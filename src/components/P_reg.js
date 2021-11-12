@@ -1,9 +1,9 @@
 import React from "react";
-class Home extends React.Component{
+class P_reg extends React.Component{
 render(){
     return(
         <div>
-         HOME
+         Registre paciente
         </div>
       
 
@@ -12,4 +12,4 @@ render(){
     )
 }
 }
-export default Home
+export default P_reg
