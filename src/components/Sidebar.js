@@ -3,74 +3,58 @@ import './Sidebar.css';
 class Sidebar extends React.Component{
 render(){
     return(
-    <div className="sidebar">
-          <div className="person-_screen">
-            <div className="sidebar">
-              <div className="b-g" />
-              <div className="new-_pacient" />
-              <div className="header">
-                <div className="b-g-header" />
-                <div className="images-/-avatar">
-                  <div className="images-/-avatar">
-                    <div className="mask" />
-                    <div className="mask" />
-                    <img src="" />
-                  </div>
-                </div>
-                <p className="text-2">Edad</p>
-                <p className="text-3">48</p>
-                <p className="text-4">Rachel Brown</p>
-                <div className="menu">
-                  <img src="" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="user">
-            <button className="button-/-sidebar-/-active">
-              <p className="text-6">Agregar cuidador</p>
-              <img src="" />
-            </button>
-          </div>
-          <div className="user">
-            <div className="user-_-1">
-              <button className="button-/-sidebar-/-active">
-                <p className="text-8">Rachel Brown</p>
-                <div className="images-/-avatar">
-                  <div className="mask" />
-                  <div className="mask" />
-                  <img src="" />
-                </div>
-              </button>
-            </div>
-          </div>
-          <div className="user">
-            <button className="button-/-sidebar-/-active">
-              <div className="rectangle" />
-              <p className="text-1-0">Lady Does</p>
-              <div className="images-/-avatar">
-                <div className="mask" />
-                <div className="mask" />
-                <img src="" />
-              </div>
-            </button>
-          </div>
-          <div className="user">
-            <div className="new-_pacient">
-              <button className="button-/-sidebar-/-active">
-                <div className="rectangle" />
-                <p className="text-1-2">Agregar paciente</p>
-                <img src="" />
-              </button>
-            </div>
-          </div>
+      
+    <div  className="Wrapper">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
         </div>
-      )
+
+        <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    </div>
     
-    
-    
-    
- 
+    )
 }
 }
 export default Sidebar
