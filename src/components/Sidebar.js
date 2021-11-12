@@ -1,27 +1,27 @@
 import React from "react";
 import './Sidebar.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 
 class Sidebar extends React.Component{
 render(){
     return(  
-    <div className='sidebar'>
+    <div className='sidebar bg-light'>
         <ul>
             <li>
-                <Link to="/home" className="btn btn-primary">
-                <FaIcons.FaHome/> Paciente
-                </Link>
+                <NavLink to="/home"exact className='text-dark rounded py-2 w-100 d-inline-block px-2'activeClassName='active' >
+                <FaIcons.FaUser className='me-2'/> Paciente
+                </NavLink>
             </li>
             <li>
-                <Link to="/p_reg" className="btn btn-primary">
-                   Agregar paciente
-                </Link>
+                <NavLink to="/p_reg"exact className='text-dark rounded py-2 w-100 d-inline-block px-2'activeClassName='active' >
+                <FaIcons.FaUserPlus className='me-2c'/> Agregar paciente
+                </NavLink>
             </li>
             <li>
-                <Link to="/reg" className="btn btn-primary">
-                    Cerrar sesion
-                </Link>
+                <NavLink to="/reg"exact className='text-dark rounded py-2 w-100 d-inline-block px-2'activeClassName='active' >
+                <FaIcons.FaDoorClosed className='me-2c'/>  Cerrar sesion
+                </NavLink>
             </li>
         </ul>
     </div>

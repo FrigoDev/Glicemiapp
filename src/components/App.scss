@@ -32,5 +32,8 @@ border-bottom: 1px solid #c4ccde;
     }
     a{
         text-decoration: none;
+        &.active{
+            background-color:  #e7e9eb;
+        }
     }
 }
