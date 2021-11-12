@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Home from './components/home';
 import P_reg from './components/P_reg';
+import Reg from './components/Reg';
 import './components/App.scss';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <div className="content">
       <Route path="/home" exact={true} component={Home}/>
       <Route path="/p_reg" exact={true} component={P_reg}/>
+      <Route path="/reg" exact={true} component={Reg}/>
       </div>
       </div>
      
