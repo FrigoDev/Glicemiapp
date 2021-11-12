@@ -1,6 +1,5 @@
 import React from "react";
-class P_reg extends React.Component{
-render(){
+const P_reg = () => {
     return(
         <div>
          Registre paciente
@@ -10,6 +9,5 @@ render(){
     
     
     )
-}
 }
 export default P_reg

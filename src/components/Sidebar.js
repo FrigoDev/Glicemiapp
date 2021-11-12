@@ -3,8 +3,7 @@ import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 
-class Sidebar extends React.Component{
-render(){
+const Sidebar = () => {
     return(  
     <div className='sidebar bg-light'>
         <ul>
@@ -24,9 +23,7 @@ render(){
                 </NavLink>
             </li>
         </ul>
-    </div>
-    
-    )
-}
+    </div>  
+    );
 }
 export default Sidebar

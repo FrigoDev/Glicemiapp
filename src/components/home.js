@@ -1,6 +1,5 @@
 import React from "react";
-class Home extends React.Component{
-render(){
+const Home = () => {
     return(
         <div>
          HOME
@@ -10,6 +9,5 @@ render(){
     
     
     )
-}
 }
 export default Home

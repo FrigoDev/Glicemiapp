@@ -1,6 +1,5 @@
 import React from "react";
-class Reg extends React.Component{
-render(){
+const Reg = () => {
     return(
         <div>
          Registrese
@@ -10,6 +9,5 @@ render(){
     
     
     )
-}
 }
 export default Reg

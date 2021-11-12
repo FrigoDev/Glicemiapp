@@ -1,15 +1,13 @@
 import React from "react";
-class Navbar extends React.Component{
-render(){
+const Navbar = () => {
     return(
         <div className='navbar'>
-            Navbar
+            <p>Navbar</p>
         </div>
       
 
     
     
     )
-}
 }
 export default Navbar
