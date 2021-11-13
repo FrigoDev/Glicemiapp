@@ -3,13 +3,12 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/js/src/modal';
 import Sidebar from './components/Sidebar';
-import Navbar from './components/NavBar';
+import Navbar from './components/Navbar';
 import Home from './components/home';
 import Login from './components/Login';
 import P_reg from './components/P_reg';
 import Reg from './components/Reg';
 import './components/App.scss';
-
 function App() {
   return (
     <Router className="App">
@@ -29,5 +28,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

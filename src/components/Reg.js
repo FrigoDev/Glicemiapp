@@ -8,19 +8,19 @@ const Reg = () => {
         <Form>
             <Form.Group className="mb-3">
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" placeholder="Nombre" />
+                <Form.Control type="text" placeholder="Nombre"/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Teléfono</Form.Label>
-                <Form.Control type="text" placeholder="Teléfono" />
+                <Form.Control type="text" placeholder="Teléfono"/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Entidad</Form.Label>
                 <Form.Control type="text" placeholder="Entidad"/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email entidad</Form.Label>
-                <Form.Control type="email" placeholder="Email entidad" />
+                <Form.Label>Email EPS</Form.Label>
+                <Form.Control type="email" placeholder="Email EPS"/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
@@ -28,7 +28,7 @@ const Reg = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" placeholder="Contraseña" />
+                <Form.Control type="password" placeholder="Contraseña"/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -42,10 +42,6 @@ const Reg = () => {
             
         </Form>
     </div>
-      
-
-    
-    
-    )
+    );
 }
 export default Reg
