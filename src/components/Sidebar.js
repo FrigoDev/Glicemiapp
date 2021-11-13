@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState , forwardRef , useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons/lib';
-import SubMenu from './SubMenu';
-import Togglebutton from './Togglebutton';
+import SubMenu from './SubMenu';;
 const Nav = styled.div`
   height: 80px;
   display: flex;
@@ -44,12 +43,12 @@ const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-
   return (
     <>
     
       <IconContext.Provider value={{ color: '#fff' }}>
-   <Togglebutton Toggle={()=>showSidebar()}/>
+      <button onClick={showSidebar} ><FaIcons.FaBars className=' fa-8x text-black' /></button>
+
         <Nav>
           <NavIcon to='#'>
           </NavIcon>

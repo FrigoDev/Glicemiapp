@@ -13,7 +13,7 @@ function App() {
   return (
     <Router className="App">
       <Navbar/>
-      <Sidebar/>
+    
       <div className="flex">
       
       <div className="align-items-center">
