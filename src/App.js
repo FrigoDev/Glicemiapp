@@ -9,7 +9,6 @@ import Login from './components/Login';
 import P_reg from './components/P_reg';
 import Reg from './components/Reg';
 import './components/App.scss';
-
 function App() {
   return (
     <Router className="App">
@@ -28,5 +27,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
