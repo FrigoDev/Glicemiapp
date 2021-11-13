@@ -13,8 +13,9 @@ function App() {
   return (
     <Router className="App">
       <Navbar/>
-      <div className="flex">
       <Sidebar/>
+      <div className="flex">
+      
       <div className="align-items-center">
       <Route path="/home" exact={true} component={Home}/>
       <Route path="/login" exact={true} component={Login}/>
