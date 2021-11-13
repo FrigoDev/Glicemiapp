@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/js/src/modal';
 import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import Home from './components/home';
 import Login from './components/Login';
 import P_reg from './components/P_reg';
