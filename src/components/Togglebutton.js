@@ -4,17 +4,14 @@ import { Link } from "react-router-dom";
 import * as AiIcons from 'react-icons/ai';
 import * as FaIcons from 'react-icons/fa';
 import Sidebar from "./Sidebar";
-import Togglebutton from "./Togglebutton";
-const NavBar = (props) => {
 
+const Togglebutton = (props) => {
+ 
     return(
-        <Navbar bg="light" expand="lg">
-        <Container>
-         <Togglebutton/>
+       <button  onClick={() => props.Toggle()}><FaIcons.FaBars className=' fa-8x text-black'/></button>
+   
 
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        </Container>
-      </Navbar>
+     
       
       
 
@@ -22,4 +19,4 @@ const NavBar = (props) => {
     
     )
 }
-export default NavBar
+export default Togglebutton

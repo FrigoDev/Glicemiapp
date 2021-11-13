@@ -6,6 +6,7 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons/lib';
 import SubMenu from './SubMenu';
+import Togglebutton from './Togglebutton';
 const Nav = styled.div`
   height: 80px;
   display: flex;
@@ -48,6 +49,7 @@ const Sidebar = () => {
     <>
     
       <IconContext.Provider value={{ color: '#fff' }}>
+   <Togglebutton Toggle={()=>showSidebar()}/>
         <Nav>
           <NavIcon to='#'>
           </NavIcon>
