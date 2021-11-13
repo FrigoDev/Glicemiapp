@@ -5,7 +5,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons/lib';
-import SubMenu from './SubMenu';;
+import SubMenu from './SubMenu';import { ButtonToolbar, ToggleButton } from 'react-bootstrap';
+;
 const Nav = styled.div`
   height: 80px;
   display: flex;
@@ -47,7 +48,7 @@ const Sidebar = () => {
     <>
     
       <IconContext.Provider value={{ color: '#fff' }}>
-      <button onClick={showSidebar} ><FaIcons.FaBars className=' fa-8x text-black' /></button>
+      <ToggleButton className='btn-secondary' onClick={showSidebar} ><FaIcons.FaBars className=' fa-5x text-white' /></ToggleButton>
 
         <Nav>
           <NavIcon to='#'>
