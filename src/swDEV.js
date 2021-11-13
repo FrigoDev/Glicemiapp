@@ -1,4 +1,26 @@
-export default function swDev() {
+import axios from "axios";
+
 let swUrl = `${process.env.PUBLIC_URL}/sw.js`;
-navigator.serviceWorker.register(swUrl).then(registration => {console.log(registration)}).catch(error => {console.log(error)});	
+var register
+
+
+const notifcaciones = async()=>
+{
+    const subs = await register.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: "BNk42dMwQPrzGqMwiM7mjlL9exyjt9qU9ZcbaETrG8gpWqZ0m2lCDrnYXoKIkzO7VuyKZspBdleEqxu-eWWtzD8"
+    })
+     await axios.post("http://192.168.1.3:4000/subscription",subs)
+} 
+
+export default  async function swDev() {
+   register = await navigator.serviceWorker.register(swUrl)
+   try{
+      await notifcaciones();
+   }
+    catch(e){
+        console.log("no notificaciones");
+    }
+   
 }
+
