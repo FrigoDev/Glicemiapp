@@ -10,7 +10,7 @@ const NavBar = (props) => {
         <Navbar bg="light" expand="lg">
         <Container>
         <Sidebar/>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">GLICDIARY</Navbar.Brand>
         </Container>
       </Navbar>
       
