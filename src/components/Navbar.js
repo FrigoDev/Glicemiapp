@@ -7,17 +7,12 @@ import Sidebar from "./Sidebar";
 const NavBar = (props) => {
 
     return(
-        <Navbar bg="light" expand="lg">
+        <Navbar className="mb-5" bg="light" expand="lg">
         <Container>
         <Sidebar/>
-          <Navbar.Brand href="#home">GLICDIARY</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="fw-bold" active="true" >GLICDIARY</Navbar.Brand>
         </Container>
       </Navbar>
-      
-      
-
-    
-    
-    )
+    );
 }
 export default NavBar
