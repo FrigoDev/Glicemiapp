@@ -25,7 +25,7 @@ export const SidebarData = [
   },
   {
     title: 'Cerrar sesion',
-    path: '/reg',
+    path: '/login',
     icon: <FaIcons.FaDoorClosed className=' fa-6x text-white' />
   },
   {
