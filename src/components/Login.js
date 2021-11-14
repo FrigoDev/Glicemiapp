@@ -1,7 +1,26 @@
-import React from "react";
-import { Button, Form, Card } from 'react-bootstrap';
+import React, {useState}   from "react";
+import { Button, Form, Card } from 'react-bootstrap'; 
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handlechange = (e) => {
+        if (e.target.name === 'email') {
+            setEmail(e.target.value);
+        } else {
+            setPassword(e.target.value);
+        }
+    }
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const a = await axios.post('http://localhost:4000/login', {"email":email,"password":password})
+        console.log(a.data);
+    }
+
     return (
     <Card className="mx-auto" style={{ width: '20rem', marginTop: '50px' }}>
         <Card.Header>
@@ -12,23 +31,23 @@ const Login = () => {
 
         </Card.Header>
         <Card.Body>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Email"/>
+                    <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={handlechange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" placeholder="Contraseña"/>
+                    <Form.Control type="password" placeholder="Contraseña" name="password" value={password} onChange={handlechange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Label>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>            
                 </Form.Group>
                 <div className="text-center">
-                <Link to="/home"><Button variant="primary" type="submit">
+                <Button variant="primary" type="submit">
                     Iniciar Sesión
-                </Button></Link>
+                </Button>
                 
                 </div>
                 
