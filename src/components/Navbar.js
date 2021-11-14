@@ -7,13 +7,14 @@ import Sidebar from "./Sidebar";
 const NavBar = (props) => {
 
     return(
-        <Navbar bg="light" expand="lg">
-        <Container>
-        <Sidebar/>
-          <Navbar.Brand href="#home">GLICDIARY</Navbar.Brand>
-        </Container>
-      </Navbar>
-      
+       
+  <Navbar bg="dark" variant="dark">
+    <Container>
+    <Sidebar/>
+  <Navbar.Brand href="#home">GLICDIARY</Navbar.Brand>
+    </Container>
+  </Navbar>
+
       
 
     
@@ -21,3 +22,5 @@ const NavBar = (props) => {
     )
 }
 export default NavBar
+
+
