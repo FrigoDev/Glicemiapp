@@ -3,7 +3,7 @@ import { Button, Form, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Reg = () => {
     return(
-        <Card className="mx-auto" style={{ width: '20rem' }}>
+        <Card className="mx-auto" style={{ width: '20rem' , marginTop: '20px'}}>
             <Card.Header>
             <h2 className="fw-bold text-center">Registro</h2>
             </Card.Header>
