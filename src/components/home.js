@@ -4,7 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 
 const Home = () => {
     return(
-        <Card className="mx-auto" style={{ width: '20rem' }}>
+        <Card className="mx-auto" style={{ width: '20rem', marginTop: '10px' }}>
         <Card.Header>
         <h2 className="fw-bold text-center">Pacientes</h2>
         </Card.Header>
