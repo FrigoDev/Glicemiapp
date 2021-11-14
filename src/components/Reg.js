@@ -3,7 +3,7 @@ import { Button, Form, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const Reg = () => {
     return(
-        <Card className="mx-auto" style={{ width: '20rem' }}>
+        <Card className="mx-auto" style={{ width: '20rem' , marginTop: '20px'}}>
             <Card.Header>
             <h2 className="fw-bold text-center">Registro</h2>
             </Card.Header>
@@ -38,9 +38,10 @@ const Reg = () => {
                         <Form.Label>¿Ya tienes una cuenta? <Link to="/login">Ingresa aquí</Link></Form.Label>            
                     </Form.Group>
                     <div className="text-center">
-                    <Button variant="primary" type="submit">
+                    <Link to="/home"> <Button variant="primary"  type="submit">
                         Registrar
-                    </Button>
+                    </Button></Link>
+                   
                     </div>       
                 </Form>
             </Card.Body>

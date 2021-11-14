@@ -1,70 +1,64 @@
 import React from "react";
-import { Row, Col, Image, Button, Card } from 'react-bootstrap';
-import './home.css'
+import { Card } from 'react-bootstrap';
+import * as FaIcons from 'react-icons/fa';
+
 const Home = () => {
-
-    const fecha = new Date();
-    const dia = fecha.getDate();
-    const mes = fecha.getMonth() + 1;
-    const año = fecha.getFullYear();
-    
-
-    return(
-        <Card className="mx-auto" style={{ width: '30rem' }}>
+    return (
+        <Card className="mx-auto" style={{ width: '20rem', marginTop: '10px' }}>
             <Card.Header>
-                <Row>
-                        <Col className="text-center">
-                            <Image className="my-1" src="UserIcon.png" roundedCircle/>
-                            <h2>Nombre del paciente</h2>
-                            <h4>Edad:x</h4>
-                        </Col>
-                </Row>
+                <h2 className="fw-bold text-center">Pacientes</h2>
             </Card.Header>
             <Card.Body>
-                <div className="container">
-                    <div className="d-flex justify-content-between mx-4 mb-3">
-                        <Button variant="primary" size="lg" block>Abrir diario</Button>
-                        <div className="todate text-center my-auto border border-2 border-primary rounded p-2 fw-bold" style={{display: 'inline-block' }}>{dia +"/"+ mes +"/"+ año}</div>
-                    </div>
+                <div class="card-block px-0 py-3">
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr class="unread">
+                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                                <td>
+                                    <h6 class="mb-1">Isabella Christensen</h6>
+                                    <p class="m-0">Lorem Ipsum is simply…</p>
+                                </td>
+
+                            </tr>
+                            <tr class="unread">
+                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                                <td>
+                                    <h6 class="mb-1">Mathilde Andersen</h6>
+                                    <p class="m-0">Lorem Ipsum is simply text of…</p>
+                                </td>
+
+                            </tr>
+                            <tr class="unread">
+                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                                <td>
+                                    <h6 class="mb-1">Karla Sorensen</h6>
+                                    <p class="m-0">Lorem Ipsum is simply…</p>
+                                </td>
+
+                            </tr>
+                            <tr class="unread">
+                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                                <td>
+                                    <h6 class="mb-1">Ida Jorgensen</h6>
+                                    <p class="m-0">Lorem Ipsum is simply text of…</p>
+                                </td>
+
+                            </tr>
+                            <tr class="unread">
+                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                                <td>
+                                    <h6 class="mb-1">Albert Andersen</h6>
+                                    <p class="m-0">Lorem Ipsum is simply dummy…</p>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div className="container d-flex justify-content-between">
-                    <div className="d-inline-flex">
-                        <ul className="dosis">
-                            <li className="d-flex justify-content-between">
-                                <div>Dosis 1 </div>
-                                <div className="form-check form-check-inline">
-                                    <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                </div>
-                            </li>
-                            <li className="d-flex justify-content-between">
-                                <div>Dosis 2 </div>
-                                <div className="form-check form-check-inline">
-                                    <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                </div>
-                            </li>
-                            <li className="d-flex justify-content-between">
-                                <div>Dosis 3 </div>
-                                <div className="form-check form-check-inline">
-                                    <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="text-center">
-                        <ul className="dosis">
-                            <li>
-                                <Button className="my-auto">Agregar medicamento</Button>
-                            </li> 
-                        </ul>
-                        <ul className="dosis">
-                            <li>
-                                <Button className="my-auto">Agregar recordatorio</Button>
-                            </li> 
-                        </ul>
-                    </div>
-                </div>
+
             </Card.Body>
-        </Card>   
-    );
+        </Card>
+    )
 }
 export default Home
