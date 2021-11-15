@@ -2,12 +2,18 @@ import React, {useState}   from "react";
 import { Button, Form, Card } from 'react-bootstrap'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+
 
 
 const Login = () => {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
+    const history = useHistory();
     const handlechange = (e) => {
         if (e.target.name === 'email') {
             setEmail(e.target.value);
@@ -17,8 +23,17 @@ const Login = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const a = await axios.post('http://localhost:4000/login', {"email":email,"password":password})
+        const a = await axios.post('http://192.168.1.3:4000/login', {"email":email,"password":password})
         console.log(a.data);
+        // redirect to home page
+        if(a.data.status === 'success'){
+            localStorage.setItem('correo', a.data.Email);
+            history.push('/home');
+        }
+    
+
+        
+
     }
 
     return (

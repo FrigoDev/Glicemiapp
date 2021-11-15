@@ -10,7 +10,7 @@ const Reg = () => {
         };
         const  handleSubmit = async (e) => { 
             e.preventDefault();
-            await axios.post('http://192.168.194.178:4000/register', user)
+            await axios.post('http://192.168.1.3:4000/register', user)
         };
     return(
         <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: '20px'}}>
