@@ -1,5 +1,8 @@
 .todate {
-    color:#0d6efd;
+    color:#FE2472;
+}
+.border{
+    border-color: #fe2472 !important;
 }
 .dosis{
     list-style-type: none;

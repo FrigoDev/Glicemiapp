@@ -9,7 +9,7 @@ const paciente = () => {
     
 
     return(
-        <Card className="mx-auto" style={{ width: '30rem' }}>
+        <Card className="mx-auto" style={{ width: '26rem' }}>
             <Card.Header>
                 <Row>
                         <Col className="text-center">

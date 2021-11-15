@@ -13,7 +13,7 @@ const Reg = () => {
             await axios.post('http://192.168.1.3:4000/register', user)
         };
     return(
-        <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: '20px'}}>
+        <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: 'auto'}}>
             <Card.Header>
             <h2 className="fw-bold text-center">Registro</h2>
             </Card.Header>

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Form, Card } from 'react-bootstrap'; 
 const medicamento = () => {
     return (
-        <Card className="mx-auto" style={{ width: '20rem', marginTop: '50px' }}>
+        <Card className="mx-auto" style={{ width: '20rem', margin: 'auto' }}>
             <Card.Header>
                 <h2 className="fw-bold text-center">Medicamento</h2>
             </Card.Header>
