@@ -10,7 +10,7 @@ const notifcaciones = async()=>
         userVisibleOnly: true,
         applicationServerKey: "BNk42dMwQPrzGqMwiM7mjlL9exyjt9qU9ZcbaETrG8gpWqZ0m2lCDrnYXoKIkzO7VuyKZspBdleEqxu-eWWtzD8"
     })
-     await axios.post("https://azukapp.herokuapp.com/subscription",subs)
+     await axios.post("http://192.168.1.3:4000/subscription",subs)
 } 
 
 export default  async function swDev() {

@@ -40,9 +40,9 @@ const Reg = () => {
                         <Form.Label>¿Ya tienes una cuenta? <Link to="/login">Ingresa aquí</Link></Form.Label>            
                     </Form.Group>
                     <div className="text-center">
-                    <Link to="/home"><Button variant="primary"  type="submit">
+                    <Button variant="primary"  type="submit">
                         Registrar
-                    </Button></Link>
+                    </Button>
                      
                    
                     </div>       
