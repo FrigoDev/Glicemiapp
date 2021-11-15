@@ -57,7 +57,7 @@ const Login = () => {
                     <Form.Control type="password" placeholder="Contraseña" name="password" value={password} onChange={handlechange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Label>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>            
+                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>            
                 </Form.Group>
                 <div className="text-center">
                 <Button variant="primary"  type="submit">

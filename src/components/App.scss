@@ -9,11 +9,23 @@ body{
     font-family: 'Rubik', sans-serif;
 }
 
-.App{
-}
 .navbar{
 background-color: #FFFFFF;
 padding: 1rem 2rem;
 border-bottom: 1px solid #c4ccde;
 }
+.btn-primary {
+    color: white!important;
+    background-color: #FE2472!important;
+    border-color: #FE2472!important;
 
+}
+.card {
+    color: #FE2472!important;
+    a{
+        color: #FE2472!important; 
+        }
+        .reglabel{
+            color: black;
+        }
+}

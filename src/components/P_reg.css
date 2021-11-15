@@ -2,3 +2,12 @@
     width: 80px;
     height: 80px;
 }
+.card {
+    color: #FE2472!important;
+    a{
+        color: #FE2472!important; 
+        }
+        .reglabel{
+            color: black;
+        }
+}
