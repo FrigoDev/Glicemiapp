@@ -28,6 +28,7 @@ const Login = () => {
         // redirect to home page
         if(a.data.status === 'success'){
             localStorage.setItem('correo', a.data.Email);
+            localStorage.setItem('tipo', a.data.tipo);
             history.push('/home');
         }
     

@@ -1,7 +1,17 @@
 import React from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
+import axios from 'axios';
+import {useHistory}  from 'react-router-dom';
 
-const set_tipo = () => {
+
+const Set_tipo = () => {
+    const history = useHistory();
+    const cambiar_tipo = async(tipo) => {
+        console.log(tipo);
+        await axios.put('http://192.168.1.3:4000/userType', {"tipo":{tipo},"email":localStorage.getItem('correo')} )
+        localStorage.setItem('tipo', tipo);
+        window.location.reload();  
+    }
     return (
         <>
         <h1 className="text-center mb-md-4 mb-3">Tipos de cuenta</h1>
@@ -24,7 +34,7 @@ const set_tipo = () => {
                             </li>
                         </ul>
                     </Card.Text>
-                    <Button>Seleccionar</Button>
+                    <Button onClick={()=>{cambiar_tipo(1)}} >Seleccionar</Button>
                 </Card.Body>
             </Card>
             <Card className="col-md-6 mx-auto text-center p-0 mb-3" style={{ width: '28rem' }}>
@@ -45,11 +55,11 @@ const set_tipo = () => {
                             </li>
                         </ul>
                     </Card.Text>
-                   <Button>Seleccionar</Button>
+                   <Button onClick={()=>{cambiar_tipo(2)}} >Seleccionar</Button>
                 </Card.Body>
             </Card>
         </div>
         </>
     );
 }
-export default set_tipo;
+export default Set_tipo;
