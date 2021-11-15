@@ -40,11 +40,9 @@ const Reg = () => {
                         <Form.Label>¿Ya tienes una cuenta? <Link to="/login">Ingresa aquí</Link></Form.Label>            
                     </Form.Group>
                     <div className="text-center">
-                    <Button variant="primary"  type="submit">
-                        Registrar
-                    </Button>
-                     
-                   
+                        <Button variant="primary"  type="submit">
+                            Registrar
+                        </Button>   
                     </div>       
                 </Form>
             </Card.Body>
