@@ -45,10 +45,9 @@ const Login = () => {
                     <Form.Label>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>            
                 </Form.Group>
                 <div className="text-center">
-                <Link to="/home"><Button variant="primary"  type="submit">
+                <Button variant="primary"  type="submit">
                 Iniciar Sesión
-                    </Button></Link>
-                     
+                    </Button>
                 </div>
                 
             </Form>
