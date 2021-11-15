@@ -44,7 +44,7 @@ const UploadImage = ({ image }) => {
         <div className="upload-image">
             <div {...getRootProps()}>
                 <input id="imageInput" {...getInputProps()} />
-                <Button variant="dark" onClick={onClick}>Subir imagen</Button>
+                <Button variant="primary" onClick={onClick}>Subir imagen</Button>
             </div>
             {previewUrl && <img src={previewUrl} alt="preview" />}
         </div>

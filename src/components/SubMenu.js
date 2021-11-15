@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #da21a2;
+  color: #FE2472;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -15,7 +15,7 @@ const SidebarLink = styled(Link)`
   &:hover {
     i{ color:#FFFFFF;}
     color:#FFFFFF;
-    background:  #da21a2;
+    background:  #FE2472;
     border-left: 4px solid #632ce4;
     cursor: pointer;
   }
@@ -32,7 +32,7 @@ const DropdownLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #f5f5f5;
+  color: #ffff;
   font-size: 18px;
   &:hover {
     background: #FFFFFF;

@@ -47,9 +47,8 @@ const Sidebar = () => {
   return (
     <>
     
-      <IconContext.Provider value={{ color: '#da21a2' } }>
-      <ToggleButton className='btn-secondary' onClick={showSidebar} ><FaIcons.FaBars className=' fa-5x ' /></ToggleButton>
-
+      <IconContext.Provider value={{ color: 'auto' } }>
+      <ToggleButton className='btn-secondary' onClick={showSidebar} ><FaIcons.FaBars /></ToggleButton>
         <Nav>
           <NavIcon to='#'>
           </NavIcon>
@@ -57,7 +56,7 @@ const Sidebar = () => {
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
+              <AiIcons.AiOutlineClose onClick={showSidebar} style={{color: '#FE2472'}} />
             </NavIcon>
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
