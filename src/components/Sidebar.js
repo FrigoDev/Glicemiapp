@@ -47,8 +47,8 @@ const Sidebar = () => {
   return (
     <>
     
-      <IconContext.Provider value={{ color: '#fff' }}>
-      <ToggleButton className='btn-secondary' onClick={showSidebar} ><FaIcons.FaBars className=' fa-5x text-white' /></ToggleButton>
+      <IconContext.Provider value={{ color: '#da21a2' } }>
+      <ToggleButton className='btn-secondary' onClick={showSidebar} ><FaIcons.FaBars className=' fa-5x ' /></ToggleButton>
 
         <Nav>
           <NavIcon to='#'>

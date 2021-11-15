@@ -8,7 +8,7 @@ export const SidebarData = [
   {
     title: 'Pacientes',
     path: '/home',
-    icon: <FaIcons.FaUserCircle className=' fa-6x text-white' />,
+    icon: <FaIcons.FaUserCircle className=' fa-6x' />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -17,7 +17,7 @@ export const SidebarData = [
   {
     title: 'Registrar paciente',
     path: '/p_reg',
-    icon: <FaIcons.FaUserPlus className=' fa-6x text-white' />,
+    icon: <FaIcons.FaUserPlus className=' fa-6x ' />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -26,7 +26,7 @@ export const SidebarData = [
   {
     title: 'Cerrar sesion',
     path: '/login',
-    icon: <FaIcons.FaDoorClosed className=' fa-6x text-white' />
+    icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
   },
   {
     title: 'Team',
