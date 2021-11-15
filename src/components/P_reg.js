@@ -8,7 +8,7 @@ const P_reg = () => {
     const [image, setImage] = React.useState('');
 
     return(
-        <Card className="mx-auto" style={{ width: '20rem' , marginTop: '10px' }}>
+        <Card className="mx-auto" style={{ width: '20rem'  }}>
             <Card.Header>
             <h2 className="fw-bold text-center">Paciente</h2>
             </Card.Header>

@@ -29,8 +29,8 @@ export const SidebarData = [
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
   },
   {
-    title: 'Team',
-    path: '/team',
+    title: 'Test paciente',
+    path: '/paciente',
     icon: <IoIcons.IoMdPeople />
   },
   {
