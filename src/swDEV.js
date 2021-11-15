@@ -10,11 +10,17 @@ const notifcaciones = async()=>
         userVisibleOnly: true,
         applicationServerKey: "BNk42dMwQPrzGqMwiM7mjlL9exyjt9qU9ZcbaETrG8gpWqZ0m2lCDrnYXoKIkzO7VuyKZspBdleEqxu-eWWtzD8"
     })
-     await axios.post("http://192.168.1.3:4000/subscription",subs)
+    localStorage.setItem("subs",JSON.stringify(subs))
+    
+     
+     
+     
+
 } 
 
 export default  async function swDev() {
    register = await navigator.serviceWorker.register(swUrl)
+   
    try{
       await notifcaciones();
    }
@@ -24,3 +30,4 @@ export default  async function swDev() {
    
 }
 
+export {register} 

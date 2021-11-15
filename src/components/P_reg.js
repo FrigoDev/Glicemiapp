@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import UploadImage from "./UploadImage";
 import { Row, Col, Image, Button, Form, Card } from 'react-bootstrap';
 import './P_reg.css'

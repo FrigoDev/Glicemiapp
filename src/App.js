@@ -10,14 +10,17 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Home from './components/home';
 import paciente from './components/Paciente';
+import medicamento from './components/medicamento';
 import Login from './components/Login';
 import P_reg from './components/P_reg';
 import Reg from './components/Reg';
 import './components/App.scss';
 import NavBar from './components/Navbar';
+import swDEV from './swDEV';
 function App() {
  
-
+  swDEV();
+  
   return (
     <div className="App">
     <Router>
@@ -26,9 +29,11 @@ function App() {
       <Route path="/login" exact={true} component={Login}/>
       <div>
         <NavBar/>
-    <Route path="/home" exact={true} component={Home}/>
+    <Route path="/home" exact={true} component={()=><Home/>}/>
     <Route path="/p_reg" exact={true} component={P_reg}/>
     <Route path="/paciente" exact={true} component={paciente}/>
+    <Route path="/medicamento" exact={true} component={medicamento}/>
+    
      
       </div>
 

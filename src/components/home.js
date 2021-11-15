@@ -1,9 +1,17 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
-const Home = () => {
+import  {useHistory} from 'react-router-dom';
+
+
+const Home = (props) => {
+    const history = useHistory();
+    if(localStorage.getItem('correo') === null){
+        history.push('/login');
+    }
+    else{
+        
+    } 
 
     return (
         <Card className="mx-auto" style={{ width: '20rem', marginTop: '10px' }}>
