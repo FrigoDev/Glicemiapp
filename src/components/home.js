@@ -1,8 +1,10 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
-
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 const Home = () => {
+
     return (
         <Card className="mx-auto" style={{ width: '20rem', marginTop: '10px' }}>
             <Card.Header>
@@ -13,14 +15,18 @@ const Home = () => {
 
                     <table class="table table-hover">
                         <tbody>
-                            <tr class="unread">
-                                <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+                            
+                                
+                                <tr class="unread" >
+                                    <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
                                 <td>
                                     <h6 class="mb-1">Isabella Christensen</h6>
                                     <p class="m-0">Lorem Ipsum is simply…</p>
                                 </td>
-
-                            </tr>
+                                   </tr>
+                                
+                     
+                         
                             <tr class="unread">
                                 <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
                                 <td>
