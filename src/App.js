@@ -11,9 +11,11 @@ import Navbar from './components/Navbar';
 import Home from './components/home';
 import paciente from './components/Paciente';
 import medicamento from './components/medicamento';
+import diario from './components/diario';
 import Login from './components/Login';
 import P_reg from './components/P_reg';
 import Reg from './components/Reg';
+import set_tipo from './components/set_tipo';
 import './components/App.scss';
 import NavBar from './components/Navbar';
 import swDEV from './swDEV';
@@ -29,13 +31,13 @@ function App() {
       <Route path="/login" exact={true} component={Login}/>
       <div>
         <NavBar/>
-    <Route path="/home" exact={true} component={()=><Home/>}/>
-    <Route path="/p_reg" exact={true} component={P_reg}/>
-    <Route path="/paciente" exact={true} component={paciente}/>
-    <Route path="/medicamento" exact={true} component={medicamento}/>
-    
-     
-      </div>
+      <Route path="/home" exact={true} component={()=><Home/>}/>
+      <Route path="/p_reg" exact={true} component={P_reg}/>
+      <Route path="/paciente" exact={true} component={paciente}/>
+      <Route path="/medicamento" exact={true} component={medicamento}/>
+      <Route path="/diario" exact={true} component={diario}/>
+      <Route path="/set_tipo" exact={true} component={set_tipo}/>
+    </div>
 
     </Switch>
   </Router>
