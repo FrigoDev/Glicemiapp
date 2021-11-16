@@ -78,9 +78,11 @@ const Paciente = () => {
                             </ul>
                         </div>
                     </div>
-                    <BarChart/>
                 </Card.Body>
             </Card>
+            <div className="page-content-1">
+                <BarChart />
+            </div>
         </div>
     );
 }
