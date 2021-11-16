@@ -1,16 +1,18 @@
 import React , {useState}  from "react";
 import { Button, Form, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios'; 
 const Reg = () => {
-     const [user, setUser] = useState({}); 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
+    const history = useHistory();
+    const [user, setUser] = useState({}); 
+    const handleChange = (e) => {
+    const { name, value } = e.target;
             setUser({ ...user, [name]: value });
         };
         const  handleSubmit = async (e) => { 
             e.preventDefault();
             await axios.post(`${process.env.REACT_APP_URI}/register`, user)
+            history.push('/login');
         };  
     return(
         <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: 'auto'}}>

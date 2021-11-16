@@ -28,35 +28,4 @@ export const SidebarData = [
     path: '/login',
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
   },
-  {
-    title: 'Test paciente',
-    path: '/paciente',
-    icon: <IoIcons.IoMdPeople />
-  },
-  {
-    title: 'Pacientes',
-    path: '/Pacientes',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Paciente 1',
-        path: '/messages/message1',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Paciente 2',
-        path: '/messages/message2',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
-  },
-  {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
-  }
 ];
