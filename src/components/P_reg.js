@@ -42,7 +42,11 @@ const P_reg = () => {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Cédula</Form.Label>
-                        <Form.Control type="text" placeholder="Cédula"/>
+                        <Form.Control type="text" placeholder="Cédula" name="cédula" onChange={handleChange}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Edad</Form.Label>
+                        <Form.Control type="text" placeholder="Edad" name="edad" onChange={handleChange}/>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>EPS</Form.Label>
