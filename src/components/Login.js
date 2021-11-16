@@ -23,13 +23,13 @@ const Login = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const a = await axios.post('http://192.168.1.3:4000/login', {"email":email,"password":password})
+        const a = await axios.post(`${process.env.REACT_APP_URI}/login`, {"email":email,"password":password})
         console.log(a.data);
         // redirect to home page
         if(a.data.status === 'success'){
             localStorage.setItem('correo', a.data.Email);
             localStorage.setItem('tipo', a.data.tipo);
-            history.push('/home');
+            history.push('/');
         }
     
 

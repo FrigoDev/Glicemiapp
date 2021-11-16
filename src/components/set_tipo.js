@@ -8,7 +8,7 @@ const Set_tipo = () => {
     const history = useHistory();
     const cambiar_tipo = async(tipo) => {
         console.log(tipo);
-        await axios.put('http://192.168.1.3:4000/userType', {"tipo":{tipo},"email":localStorage.getItem('correo')} )
+        await axios.put(`${process.env.REACT_APP_URI}/userType`, {"tipo":{tipo},"email":localStorage.getItem('correo')} )
         localStorage.setItem('tipo', tipo);
         window.location.reload();  
     }

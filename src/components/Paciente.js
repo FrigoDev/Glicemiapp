@@ -1,7 +1,21 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
 import './paciente.css'
-const paciente = () => {
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+const Paciente = () => {
+    const [paciente, setPaciente] = useState({});
+    let {cedula}=useParams();
+    const obtener_paciente = async() => {
+        const res = await axios.post(`${process.env.REACT_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula});
+        console.log(res.data);
+        setPaciente(res.data);
+        
+    }
+    useEffect(() => {
+        obtener_paciente();
+    }, []);
+
     const fecha = new Date();
     const dia = fecha.getDate();
     const mes = fecha.getMonth() + 1;
@@ -14,9 +28,9 @@ const paciente = () => {
                 <Card.Header>
                     <Row>
                             <Col className="text-center">
-                                <Image className="my-1" src="UserIcon.png" roundedCircle/>
-                                <h2>Nombre del paciente</h2>
-                                <h4>Edad:x</h4>
+                                <Image className="my-1" src={paciente.foto===""?"userIcon.png":paciente.foto} roundedCircle/>
+                                <h2>{paciente.nombre}</h2>
+                                <h4>Edad:{paciente.edad}</h4>
                             </Col>
                     </Row>
                 </Card.Header>
@@ -68,4 +82,4 @@ const paciente = () => {
         </div>
     );
 }
-export default paciente
+export default Paciente
