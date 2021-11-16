@@ -18,6 +18,7 @@ import Reg from './components/Reg';
 import set_tipo from './components/set_tipo';
 import './components/App.scss';
 import NavBar from './components/Navbar';
+import Retype from './components/Retype'
 import swDEV from './swDEV';
 function App() {
  
@@ -29,14 +30,14 @@ function App() {
     <Switch>
       <Route path="/reg" exact={true} component={Reg}/>
       <Route path="/login" exact={true} component={Login}/>
-      <Route path="/set_tipo" exact={true} component={set_tipo}/>
       <div>
         <NavBar/>
       <Route path="/" exact={true} component={()=><Home/>}/>
       <Route path="/p_reg" exact={true} component={P_reg}/>
       <Route path="/paciente/:cedula" exact={true} component={paciente}/>
-      <Route path="/medicamento" exact={true} component={medicamento}/>
+      <Route path="/medicamento/:cedula" exact={true} component={medicamento}/>
       <Route path="/diario" exact={true} component={diario}/>
+      <Route path="/Retype" exact={true} component={Retype}/>
 
     </div>
 

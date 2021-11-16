@@ -1,8 +1,7 @@
 import React from "react";
-import { Row, Col, Image, Button, Card } from 'react-bootstrap';
+import { Row, Col, Image, Button, Card,Modal} from 'react-bootstrap';
 import axios from 'axios';
 import {useHistory}  from 'react-router-dom';
-
 
 const Set_tipo = () => {
     const history = useHistory();
@@ -34,7 +33,7 @@ const Set_tipo = () => {
                             </li>
                         </ul>
                     </Card.Text>
-                    <Button onClick={()=>{cambiar_tipo(1)}} >Seleccionar</Button>
+                    <Button onClick={()=>{history.push("/Retype")}} >Seleccionar</Button>
                 </Card.Body>
             </Card>
             <Card className="col-md-6 mx-auto text-center p-0 mb-3" style={{ width: '28rem' }}>

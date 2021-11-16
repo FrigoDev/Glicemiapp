@@ -2,25 +2,44 @@ import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
 import BarChart from "./graphics";
 import './paciente.css'
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import axios from 'axios';
+
+const Dosis = (props) => {
+    
+    
+   return(
+        <>
+         <div>Dosis 1 </div>
+        <div className="form-check form-check-inline">
+          <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
+         </div>
+        </>
+   ) 
+}
+
+
+
 const Paciente = () => {
+    const history = useHistory();
     const [paciente, setPaciente] = useState({});
     let {cedula}=useParams();
+    const fecha = new Date();
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1;
+    const año = fecha.getFullYear();
+    const fechaActual = año + "-" + mes + "-" + dia;
     const obtener_paciente = async() => {
         const res = await axios.post(`${process.env.REACT_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula});
-        console.log(res.data);
-        setPaciente(res.data);
+        const dosis =await axios.post(`${process.env.REACT_APP_URI}/GetDosis`,{email:localStorage.getItem('correo'),cedula:cedula,fecha:fechaActual}); 
+        setPaciente({...res.data,dosis:dosis.data});
         
     }
     useEffect(() => {
         obtener_paciente();
     }, []);
 
-    const fecha = new Date();
-    const dia = fecha.getDate();
-    const mes = fecha.getMonth() + 1;
-    const año = fecha.getFullYear();
+    console.log(paciente);
     
 
     return(
@@ -44,31 +63,24 @@ const Paciente = () => {
                     </div>
                     <div className="container d-flex justify-content-between">
                         <div className="d-inline-flex">
-                            <ul className="dosis list-unstyled">
-                                <li className="d-flex justify-content-between">
-                                    <div>Dosis 1 </div>
-                                    <div className="form-check form-check-inline">
-                                        <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                    </div>
-                                </li>
-                                <li className="d-flex justify-content-between">
-                                    <div>Dosis 2 </div>
-                                    <div className="form-check form-check-inline">
-                                        <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                    </div>
-                                </li>
-                                <li className="d-flex justify-content-between">
-                                    <div>Dosis 3 </div>
-                                    <div className="form-check form-check-inline">
-                                        <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
-                                    </div>
-                                </li>
-                            </ul>
+                            <ul className="dosis list-unstyled">{
+                                paciente.dosis!==undefined?paciente.dosis.map((dosis,index)=>{
+                                    return(
+                                        <li className="d-flex justify-content-between" key={index} >
+                                            <Dosis dosis={dosis}/>
+                                        </li>
+                                    )
+                                }):null
+                            }</ul>
                         </div>
                         <div className="text-center">
                             <ul className="dosis list-unstyled">
+
+
                                 <li>
-                                    <Button className="my-auto">Agregar medicamento</Button>
+                                    <Button className="my-auto" onClick={()=>{
+                                        history.push(`/medicamento/${cedula}`)
+                                    }}>Agregar medicamento</Button>
                                 </li> 
                             </ul>
                             <ul className="dosis list-unstyled">

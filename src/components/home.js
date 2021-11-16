@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { Button, Card, Image } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
@@ -27,10 +27,13 @@ const Home = () => {
             history.push(`/paciente/${paciente}`);
         } 
         const envio = async () => {
-            await axios.post(`${process.env.REACT_APP_URI}/subscription`, { "subs": JSON.parse(localStorage.getItem('subs')), "email": localStorage.getItem("correo") })
             const datos = await axios.post(`${process.env.REACT_APP_URI}/Getacientes`,{email: localStorage.getItem("correo")})
             setData(datos.data);
         }
+        useEffect(() => {
+            envio();
+        }, []);
+
         if (localStorage.getItem('correo') === null) {
             history.push('/login');
         }
@@ -38,12 +41,11 @@ const Home = () => {
             if (localStorage.getItem('tipo') === '0') {
                 return (<SetType />)
             }
-            else if(localStorage.getItem('tipo') === '2'){
-                if(data.length === 0)
-                {
-                    envio();
-                } 
-                
+            else if(localStorage.getItem('tipo') === '1'){
+                if(data.length !== 0){
+                    console.log(data[0]);
+                    moverse(data[0].cedula);
+                }
             }
             
         }
