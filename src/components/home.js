@@ -9,7 +9,7 @@ import SetType from './set_tipo';
 const PData = (props) => {
     return (
         <tr class="unread" >
-            <td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>
+            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><img src={props.imagen} className='img-fluid' /></td>}
             <td>
                 <h6 class="mb-1">{props.name}</h6>
                 <p class="m-0">{props.description}</p>
@@ -56,7 +56,7 @@ const Home = () => {
                                 {
                                     data.map((item,i) => 
                                     {
-                                        return <PData key={i} name={item.nombre} description={`${item.cedula}`}/>
+                                        return <PData key={i} imagen={item.foto} name={item.nombre} description={`${item.cedula}`}/>
                                     })
                                 }
 
