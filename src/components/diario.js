@@ -17,6 +17,12 @@ const PData = (props) => {
 
 
 const diario = () => {
+    //guardar hora y fecha actual
+    const fecha = new Date();
+    const hora = fecha.getHours() + ":" + fecha.getMinutes();
+    const fechaActual = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear();
+    
+    
     return (
         <>
             <Card className="mx-auto" style={{ width: '23rem' }}>
@@ -33,9 +39,13 @@ const diario = () => {
                     <h3 className="text-center">Diario</h3>
                     <h5 className="text-center">Registro de azúcar</h5>
                     <Form>
-                        <InputGroup>
+                        <InputGroup className="mb-md-2 mb-2">
                             <FormControl placeholder="Nivel de azúcar" />
                             <InputGroup.Text className="fw-bold">mg/dl</InputGroup.Text>
+                        </InputGroup>
+                        <InputGroup>
+                            <FormControl placeholder="Insulina" />
+                            <InputGroup.Text className="fw-bold">ml</InputGroup.Text>
                         </InputGroup>
                         <div className="text-center">
                             <Button className="mt-3">Registrar</Button>
@@ -51,7 +61,7 @@ const diario = () => {
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Glucosa(mg/dl)</th>
-                                <th scope="col">Insulina(Bolo)</th>
+                                <th scope="col">Insulina(ml)</th>
                             </tr>
                         </thead>
                         <tbody>

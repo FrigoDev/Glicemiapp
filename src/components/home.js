@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Card } from 'react-bootstrap';
+import { Button, Card, Image } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import SetType from './set_tipo';
 
@@ -10,8 +10,8 @@ const PData = (props) => {
     
     return (
         <tr class="unread" onClick={()=>{props.moverse(props.cedula)}}>
-            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><img src={props.imagen} className='img-fluid' /></td>}
-            <td>
+            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={props.imagen} className='img-fluid' roundedCircle /></td>}
+            <td className="text-center align-middle">
                 <h6 class="mb-1">{props.name}</h6>
                 <p class="m-0">{props.description}</p>
             </td>
@@ -54,7 +54,7 @@ const Home = () => {
                     <h2 className="fw-bold text-center">Pacientes</h2>
                 </Card.Header>
                 <Card.Body>
-                    <div class="card-block px-0 py-3">
+                    <div class="card-block px-0">
 
                         <table class="table table-hover">
                             <tbody>
@@ -64,11 +64,12 @@ const Home = () => {
                                         return <PData key={i} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
                                     })
                                 }
-
                             </tbody>
                         </table>
+                        <div className="text-center">
+                            <Link to="/p_reg" ><Button >Registrar paciente</Button></Link>
+                        </div>
                     </div>
-
                 </Card.Body>
             </Card>
         );
