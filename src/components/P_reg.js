@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import UploadImage from "./UploadImage";
 import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
-
+import axios from 'axios';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
 
 const P_reg = () => {
@@ -14,9 +14,9 @@ const P_reg = () => {
             [e.target.name]: e.target.value
         });
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(datos);
+        await axios.post('http://192.168.1.3:4000/registerPacientes', {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
     }
     return(
         <Card className="mx-auto" style={{ width: '20rem'  }}>
