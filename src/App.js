@@ -36,7 +36,7 @@ function App() {
       <Route path="/p_reg" exact={true} component={P_reg}/>
       <Route path="/paciente/:cedula" exact={true} component={paciente}/>
       <Route path="/medicamento/:cedula" exact={true} component={medicamento}/>
-      <Route path="/diario" exact={true} component={diario}/>
+      <Route path="/diario/:cedula" exact={true} component={diario}/>
       <Route path="/Retype" exact={true} component={Retype}/>
 
     </div>
