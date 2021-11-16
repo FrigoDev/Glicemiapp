@@ -41,12 +41,12 @@ const P_reg = () => {
                         <Form.Control type="text" placeholder="Teléfono" name="telefono" onChange={handleChange}/>
                     </Form.Group>
                     <Form.Group className="mb-3">
+                        <Form.Label>Cédula</Form.Label>
+                        <Form.Control type="text" placeholder="Cédula"/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
                         <Form.Label>EPS</Form.Label>
                         <Form.Control type="text" placeholder="EPS" name="eps" onChange={handleChange}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Email" name="email" onChange={handleChange}/>
                     </Form.Group>
                     <div className="text-center">
                     <Button variant="primary" type="submit">
