@@ -28,9 +28,4 @@ export const SidebarData = [
     path: '/login',
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
   },
-  {
-    title: 'Test paciente',
-    path: '/paciente/:cedula',
-    icon: <IoIcons.IoMdPeople />
-  },
 ];
