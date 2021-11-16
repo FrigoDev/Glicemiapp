@@ -5,17 +5,14 @@ import './paciente.css'
 import {useParams,useHistory} from 'react-router-dom';
 import axios from 'axios';
 
-const Dosis = (props) => {    
-      
-    const handleClick = async(e) => {
-      console.log(e.target.checked);
-    } 
-
+const Dosis = (props) => {
+    
+    
    return(
         <>
-         <div>Dosis {props.index+1} </div>
+         <div>Dosis 1 </div>
         <div className="form-check form-check-inline">
-          <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" onChange={handleClick}/>
+          <input className="ml-0 mt-1 m-auto form-check-input" type="checkbox" id="inlineCheckbox1" value=""/>
          </div>
         </>
    ) 
@@ -53,24 +50,24 @@ const Paciente = () => {
                             <Col className="text-center">
                                 <Image className="my-1" src={paciente.foto===""?"userIcon.png":paciente.foto} roundedCircle/>
                                 <h2>{paciente.nombre}</h2>
-                                <h4>Edad: {paciente.edad}</h4>
+                                <h4>Edad:{paciente.edad}</h4>
                             </Col>
                     </Row>
                 </Card.Header>
                 <Card.Body>
                     <div className="container">
                         <div className="d-flex justify-content-between mx-1 mb-3">
-                            <Button variant="primary" size="lg" onClick={()=>{history.push( `/diario/${cedula}`)}}  block>Abrir diario</Button>
+                            <Button variant="primary" size="lg" block>Abrir diario</Button>
                             <div className="todate text-center my-auto border-2 rounded p-2 fw-bold" style={{display: 'inline-block'}}>{dia +"/"+ mes +"/"+ año}</div>
                         </div>
                     </div>
                     <div className="container d-flex justify-content-between">
                         <div className="d-inline-flex">
                             <ul className="dosis list-unstyled">{
-                                paciente.dosis!==undefined?paciente.dosis.map((x,index)=>{
+                                paciente.dosis!==undefined?paciente.dosis.map((dosis,index)=>{
                                     return(
                                         <li className="d-flex justify-content-between" key={index} >
-                                            <Dosis dosis={paciente.dosis} index={index} setpaciente={setPaciente}/>
+                                            <Dosis dosis={dosis}/>
                                         </li>
                                     )
                                 }):null
