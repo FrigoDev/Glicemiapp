@@ -88,7 +88,7 @@ const Paciente = () => {
                             </ul>
                             <ul className="dosis list-unstyled">
                                 <li>
-                                    <Button className="my-auto">Agregar recordatorio</Button>
+                                    <Button className="my-auto" href="https://calendar.google.com/calendar/u/0/r/eventedit">Agregar recordatorio</Button>
                                 </li> 
                             </ul>
                         </div>
