@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { Row, Col, Image, Button, Form, FormControl, InputGroup, Card } from 'react-bootstrap';
 import BarChart from "./graphics";
 import './diario.css'
+import axios from 'axios';
+import { useParams, useHistory } from 'react-router-dom';
 
 const PData = (props) => {
     return (
@@ -16,7 +18,21 @@ const PData = (props) => {
 
 
 
-const diario = () => {
+const Diario = () => {
+    const history = useHistory();
+    const [paciente, setPaciente] = useState({});
+
+    let {cedula}=useParams();
+    const obtener_paciente = async() => {
+        const res = await axios.post(`${process.env.REACT_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula}); 
+        setPaciente({...res.data});
+        
+    }
+    useEffect(() => {
+        obtener_paciente();
+    }, []);
+
+
     //guardar hora y fecha actual
     const fecha = new Date();
     const hora = fecha.getHours() + ":" + fecha.getMinutes();
@@ -29,9 +45,9 @@ const diario = () => {
                 <Card.Header>
                     <Row>
                         <Col className="mx-auto text-center">
-                            <Image className="my-1" src="UserIcon.png" roundedCircle />
-                            <h2 className="fs-3">Nombre del paciente</h2>
-                            <h4 className="fs-5">Edad:x</h4>
+                            <Image className="my-1" src={paciente.foto===""?"userIcon.png":paciente.foto} roundedCircle />
+                            <h2 className="fs-3">{paciente.nombre}</h2>
+                            <h4 className="fs-5">Edad:{paciente.edad}</h4>
                         </Col>
                     </Row>
                 </Card.Header>
@@ -98,4 +114,4 @@ const diario = () => {
         </>
     );
 }
-export default diario;
+export default Diario;
