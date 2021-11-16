@@ -55,7 +55,7 @@ const Set_tipo = () => {
                             </li>
                         </ul>
                     </Card.Text>
-                   <Button onClick={()=>{cambiar_tipo(2)}} >Seleccionar</Button>
+                   <Button onClick={()=>{cambiar_tipo(2)}} > Seleccionar</Button>
                 </Card.Body>
             </Card>
         </div>

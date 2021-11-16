@@ -22,13 +22,14 @@ import swDEV from './swDEV';
 function App() {
  
   swDEV();
-  
+ 
   return (
     <div className="App">
     <Router>
     <Switch>
       <Route path="/reg" exact={true} component={Reg}/>
       <Route path="/login" exact={true} component={Login}/>
+      <Route path="/set_tipo" exact={true} component={set_tipo}/>
       <div>
         <NavBar/>
       <Route path="/" exact={true} component={()=><Home/>}/>
@@ -36,7 +37,7 @@ function App() {
       <Route path="/paciente/:cedula" exact={true} component={paciente}/>
       <Route path="/medicamento" exact={true} component={medicamento}/>
       <Route path="/diario" exact={true} component={diario}/>
-      <Route path="/set_tipo" exact={true} component={set_tipo}/>
+
     </div>
 
     </Switch>
