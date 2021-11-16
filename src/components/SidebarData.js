@@ -30,7 +30,7 @@ export const SidebarData = [
   },
   {
     title: 'Test paciente',
-    path: '/paciente',
+    path: '/paciente/:cedula',
     icon: <IoIcons.IoMdPeople />
   },
   {
