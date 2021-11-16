@@ -38,7 +38,7 @@ const Paciente = () => {
                     <div className="container">
                         <div className="d-flex justify-content-between mx-1 mb-3">
                             <Button variant="primary" size="lg" block>Abrir diario</Button>
-                            <div className="todate text-center my-auto border border-2 rounded p-2 fw-bold" style={{display: 'inline-block', borderColor: '#FE2472' }}>{dia +"/"+ mes +"/"+ año}</div>
+                            <div className="todate text-center my-auto border-2 rounded p-2 fw-bold" style={{display: 'inline-block'}}>{dia +"/"+ mes +"/"+ año}</div>
                         </div>
                     </div>
                     <div className="container d-flex justify-content-between">
