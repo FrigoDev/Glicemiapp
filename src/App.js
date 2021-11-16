@@ -31,7 +31,7 @@ function App() {
       <Route path="/login" exact={true} component={Login}/>
       <div>
         <NavBar/>
-      <Route path="/home" exact={true} component={()=><Home/>}/>
+      <Route path="/" exact={true} component={()=><Home/>}/>
       <Route path="/p_reg" exact={true} component={P_reg}/>
       <Route path="/paciente" exact={true} component={paciente}/>
       <Route path="/medicamento" exact={true} component={medicamento}/>

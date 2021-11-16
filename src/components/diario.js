@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Image, Button, Form, FormControl, InputGroup, Card } from 'react-bootstrap';
+import BarChart from "./graphics";
 import './diario.css'
 
 const PData = (props) => {
@@ -80,6 +81,10 @@ const diario = () => {
                     </table>
                 </div>
             </div>
+            <div className="page-content-1">
+                <BarChart />
+            </div>
+
         </>
     );
 }
