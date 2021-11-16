@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
+import BarChart from "./graphics";
 import './paciente.css'
 const paciente = () => {
     const fecha = new Date();
@@ -63,6 +64,7 @@ const paciente = () => {
                             </ul>
                         </div>
                     </div>
+                    <BarChart/>
                 </Card.Body>
             </Card>
         </div>
