@@ -16,7 +16,7 @@ const P_reg = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post('http://192.168.1.3:4000/registerPacientes', {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
+        await axios.post(`${process.env.REACT_APP_URI}/registerPacientes`, {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
     }
     return(
         <Card className="mx-auto" style={{ width: '20rem'  }}>

@@ -33,7 +33,7 @@ function App() {
         <NavBar/>
       <Route path="/" exact={true} component={()=><Home/>}/>
       <Route path="/p_reg" exact={true} component={P_reg}/>
-      <Route path="/paciente" exact={true} component={paciente}/>
+      <Route path="/paciente/:cedula" exact={true} component={paciente}/>
       <Route path="/medicamento" exact={true} component={medicamento}/>
       <Route path="/diario" exact={true} component={diario}/>
       <Route path="/set_tipo" exact={true} component={set_tipo}/>

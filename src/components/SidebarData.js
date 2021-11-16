@@ -7,7 +7,7 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: 'Pacientes',
-    path: '/home',
+    path: '/',
     icon: <FaIcons.FaUserCircle className=' fa-6x' />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
