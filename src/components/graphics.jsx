@@ -2,14 +2,21 @@ import React from 'react';
 import { Line } from 'react-chartjs-2'
 
 const BarChart = (props) => {
+    const  {datos} = props;
+    var glucosa = [];
+    var textos=[];
+     for(var i=0;i<datos.length;i++){
+         textos.push(datos[i].hora);
+        glucosa.push(datos[i].glucosa);
+    } 
     return (
         <div className='mb-md-5 mb-2'>
             <Line
                 data={{
-                    labels: ['day1', 'day2', 'day3', 'day4', 'day5', 'day6'],
+                    labels: textos,
                     datasets: [
                         {
-                            data:[120,140,103,105,121,131],
+                            data:glucosa,
                             label:'Niveles de azúcar',
                             backgroundColor:['#F383A8'],
                             borderColor:['#FE2472'],
