@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
 import BarChart from "./graphics";
 import './paciente.css'
-import {useParams,useHistory} from 'react-router-dom';
+import {useParams,useHistory,Link} from 'react-router-dom';
 import axios from 'axios';
 
 const Dosis = (props) => {    
@@ -88,16 +88,13 @@ const Paciente = () => {
                             </ul>
                             <ul className="dosis list-unstyled">
                                 <li>
-                                    <Button className="my-auto" href="https://calendar.google.com/calendar/u/0/r/eventedit">Agregar recordatorio</Button>
+                                    <Button className="my-auto"><a className="rec-color" href="https://calendar.google.com/calendar/u/0/r/eventedit" target="_blank">Agregar recordatorio</a></Button>
                                 </li> 
                             </ul>
                         </div>
                     </div>
                 </Card.Body>
             </Card>
-            <div className="page-content-1">
-                <BarChart />
-            </div>
         </div>
     );
 }
