@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
 import UploadImage from "./UploadImage";
+import { useHistory } from 'react-router-dom';
 import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
 import axios from 'axios';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
 
 const P_reg = () => {
-
+    const history = useHistory();
     const [image, setImage] = useState('');
     const [datos, setDatos] = useState({}); 
     const handleChange = (e) => {
@@ -17,6 +18,7 @@ const P_reg = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         await axios.post(`${process.env.REACT_APP_URI}/registerPacientes`, {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
+        history.push('/');
     }
     return(
         <Card className="mx-auto" style={{ width: '20rem'  }}>
