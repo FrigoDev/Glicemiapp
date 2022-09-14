@@ -1,24 +1,42 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect}from 'react';
 import UploadImage from "./UploadImage";
-import { useHistory } from 'react-router-dom';
 import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
 
 const P_reg = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [image, setImage] = useState('');
     const [datos, setDatos] = useState({}); 
-    const handleChange = (e) => {
+    const [user, setUser] = useState({});
+
+    const getdata = async () => {
+        const response = await axios.post(`${import.meta.env.VITE_APP_URI}`,{email:localStorage.getItem('correo')});
+        setUser(response.data);
+        console.log(response.data);
+    }
+
+    
+
+    useEffect(() => {
+        getdata();
+    }, []);
+   
+
+    const handleChange = async(e) => {
         setDatos({
             ...datos,
             [e.target.name]: e.target.value
         });
+        
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${process.env.REACT_APP_URI}/registerPacientes`, {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
-        history.push('/');
+        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {"tipo":{tipo:1},"email":localStorage.getItem('correo')} )
+        localStorage.setItem('tipo', 1);
+        await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":{...datos,nombre:user.Nombre,telefono:user.Telefono}})
+        history('/');
     }
     return(
         <Card className="mx-auto" style={{ width: '20rem'  }}>
@@ -31,17 +49,8 @@ const P_reg = () => {
                         <Col className="text-center">
                             <Basura className="my-1 tamañoImg" src={image? image:'userIcon.png'}  roundedCircle/>
                             <UploadImage image={setImage}/>
-                            
                         </Col>
                     </Row>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange}/>
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Teléfono</Form.Label>
-                        <Form.Control type="text" placeholder="Teléfono" name="telefono" onChange={handleChange}/>
-                    </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Cédula</Form.Label>
                         <Form.Control type="text" placeholder="Cédula" name="cédula" onChange={handleChange}/>

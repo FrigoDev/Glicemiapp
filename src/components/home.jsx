@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import { Button, Card, Image } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SetType from './set_tipo';
 
@@ -21,13 +21,13 @@ const PData = (props) => {
 
 const Home = () => {
         const [data, setData] = useState([]);
-        const history = useHistory();
+        const history = useNavigate();
         
         const moverse = (paciente) => {
-            history.push(`/paciente/${paciente}`);
+            history(`/paciente/${paciente}`);
         } 
         const envio = async () => {
-            const datos = await axios.post(`${process.env.REACT_APP_URI}/Getacientes`,{email: localStorage.getItem("correo")})
+            const datos = await axios.post(`${import.meta.env.VITE_APP_URI}/Getacientes`,{email: localStorage.getItem("correo")})
             setData(datos.data);
         }
         useEffect(() => {
@@ -35,7 +35,7 @@ const Home = () => {
         }, []);
 
         if (localStorage.getItem('correo') === null) {
-            history.push('/login');
+            history('/login');
         }
         else {
             if (localStorage.getItem('tipo') === '0') {

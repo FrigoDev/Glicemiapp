@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
 import BarChart from "./graphics";
 import './paciente.css'
-import {useParams,useHistory,Link} from 'react-router-dom';
+import {useParams,useNavigate,Link} from 'react-router-dom';
 import axios from 'axios';
 
 const Dosis = (props) => {    
@@ -24,7 +24,7 @@ const Dosis = (props) => {
 
 
 const Paciente = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [paciente, setPaciente] = useState({});
     let {cedula}=useParams();
     const fecha = new Date();
@@ -33,8 +33,8 @@ const Paciente = () => {
     const año = fecha.getFullYear();
     const fechaActual = año + "-" + mes + "-" + dia;
     const obtener_paciente = async() => {
-        const res = await axios.post(`${process.env.REACT_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula});
-        const dosis =await axios.post(`${process.env.REACT_APP_URI}/GetDosis`,{email:localStorage.getItem('correo'),cedula:cedula,fecha:fechaActual}); 
+        const res = await axios.post(`${import.meta.env.VITE_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula});
+        const dosis =await axios.post(`${import.meta.env.VITE_APP_URI}/GetDosis`,{email:localStorage.getItem('correo'),cedula:cedula,fecha:fechaActual}); 
         setPaciente({...res.data,dosis:dosis.data});
         
     }
@@ -60,7 +60,7 @@ const Paciente = () => {
                 <Card.Body>
                     <div className="container">
                         <div className="d-flex justify-content-between mx-1 mb-3">
-                            <Button variant="primary" size="lg" onClick={()=>{history.push( `/diario/${cedula}`)}}  block>Abrir diario</Button>
+                            <Button variant="primary" size="lg" onClick={()=>{history( `/diario/${cedula}`)}}  block>Abrir diario</Button>
                             <div className="todate text-center my-auto border-2 rounded p-2 fw-bold" style={{display: 'inline-block'}}>{dia +"/"+ mes +"/"+ año}</div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@ const Paciente = () => {
 
                                 <li>
                                     <Button className="my-auto" onClick={()=>{
-                                        history.push(`/medicamento/${cedula}`)
+                                        history(`/medicamento/${cedula}`)
                                     }}>Agregar medicamento</Button>
                                 </li> 
                             </ul>

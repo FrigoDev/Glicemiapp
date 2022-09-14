@@ -2,7 +2,7 @@ import React, {useState}   from "react";
 import { Button, Form, Card } from 'react-bootstrap'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,7 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
 
-    const history = useHistory();
+    const history = useNavigate();
     const handlechange = (e) => {
         if (e.target.name === 'email') {
             setEmail(e.target.value);
@@ -23,13 +23,13 @@ const Login = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const a = await axios.post(`${process.env.REACT_APP_URI}/login`, {"email":email,"password":password})
+        const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password})
         console.log(a.data);
         // redirect to home page
         if(a.data.status === 'success'){
             localStorage.setItem('correo', a.data.Email);
             localStorage.setItem('tipo', a.data.tipo);
-            history.push('/');
+            history('/');
         }
     
 

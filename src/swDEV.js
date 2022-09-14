@@ -1,6 +1,4 @@
-import axios from "axios";
-
-let swUrl = `${process.env.PUBLIC_URL}/sw.js`;
+let swUrl = `${import.meta.env.VITE_APP_URI}/sw.js`;
 var register
 
 

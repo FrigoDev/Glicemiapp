@@ -1,13 +1,13 @@
 import React from "react";
 import { Row, Col, Image, Button, Card,Modal} from 'react-bootstrap';
 import axios from 'axios';
-import {useHistory}  from 'react-router-dom';
+import {useNavigate}  from 'react-router-dom';
 
 const Set_tipo = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const cambiar_tipo = async(tipo) => {
         console.log(tipo);
-        await axios.put(`${process.env.REACT_APP_URI}/userType`, {"tipo":{tipo},"email":localStorage.getItem('correo')} )
+        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {"tipo":{tipo},"email":localStorage.getItem('correo')} )
         localStorage.setItem('tipo', tipo);
         window.location.reload();  
     }
@@ -33,7 +33,7 @@ const Set_tipo = () => {
                             </li>
                         </ul>
                     </Card.Text>
-                    <Button onClick={()=>{history.push("/Retype")}} >Seleccionar</Button>
+                    <Button onClick={()=>{history("/Retype")}} >Seleccionar</Button>
                 </Card.Body>
             </Card>
             <Card className="col-md-6 mx-auto text-center p-0 mb-3" style={{ width: '28rem' }}>

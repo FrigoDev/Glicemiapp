@@ -3,7 +3,7 @@ import { Row, Col, Image, Button, Form, FormControl, InputGroup, Card } from 're
 import BarChart from "./graphics";
 import './diario.css'
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const PData = (props) => {
     const  fecha = new Date(props.fecha);
@@ -21,7 +21,7 @@ const Seguiminto = () => {
     const [datos,setDatos]=useState([])
     let {cedula}=useParams();
     const obtener_datos = async() => {
-        const datos = await axios.post(`${process.env.REACT_APP_URI}/GetDiario`,{email: localStorage.getItem("correo"),cedula:cedula});
+        const datos = await axios.post(`${import.meta.env.VITE_APP_URI}/GetDiario`,{email: localStorage.getItem("correo"),cedula:cedula});
         setDatos(datos.data)
         console.log(datos.data);
     }
@@ -61,13 +61,13 @@ const Seguiminto = () => {
 } 
 
 const Diario = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [paciente, setPaciente] = useState({});
     const [datos,userdatos]=useState({})
 
     let {cedula}=useParams();
     const obtener_paciente = async() => {
-        const res = await axios.post(`${process.env.REACT_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula}); 
+        const res = await axios.post(`${import.meta.env.VITE_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula}); 
         setPaciente({...res.data});
         
     }
@@ -91,7 +91,7 @@ const Diario = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-       const salida= await axios.post(`${process.env.REACT_APP_URI}/diario`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos})
+       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos})
         window.location.reload();
     }
     

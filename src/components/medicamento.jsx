@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { Button, Form, Card } from 'react-bootstrap'; 
-import {useParams,useHistory} from 'react-router-dom';
+import {useParams,useNavigate} from 'react-router-dom';
 import axios from "axios";
 
 const Medicamento = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const {cedula}=useParams();
     const [datos, setDatos] = useState({})
 
@@ -16,8 +16,8 @@ const Medicamento = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${process.env.REACT_APP_URI}/medicamento`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos}) 
-        history.push(`/paciente/${cedula}`)
+        await axios.post(`${import.meta.env.VITE_APP_URI}/medicamento`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos}) 
+        history(`/paciente/${cedula}`)
     }
 
     return (

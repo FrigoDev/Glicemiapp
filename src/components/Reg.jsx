@@ -1,9 +1,19 @@
 import React , {useState}  from "react";
 import { Button, Form, Card } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
+
+
+const headersData = {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    },
+    withCredentials: true,
+  }
 const Reg = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [user, setUser] = useState({}); 
     const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,12 +21,14 @@ const Reg = () => {
         };
         const  handleSubmit = async (e) => { 
             e.preventDefault();
-            await axios.post(`${process.env.REACT_APP_URI}/register`, user)
-            history.push('/login');
+            await axios.post(`${import.meta.env.VITE_APP_URI}/register`, user,headersData)
+            history('/login');
         };  
     return(
         <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: 'auto'}}>
-            <Card.Header>
+            <Card.Header>{
+                console.log(import.meta.env.VITE_APP_URI)
+                }
             <h2 className="fw-bold text-center">Registro</h2>
             </Card.Header>
             <Card.Body>
