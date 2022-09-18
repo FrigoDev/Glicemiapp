@@ -3,6 +3,7 @@ import { Button, Card, Image } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import{headersData} from './configs'
 import SetType from './set_tipo';
 
 //recibir props y retornar una vista
@@ -27,17 +28,15 @@ const Home = () => {
             history(`/paciente/${paciente}`);
         } 
         const envio = async () => {
-            const datos = await axios.post(`${import.meta.env.VITE_APP_URI}/Getacientes`,{email: localStorage.getItem("correo")})
+            const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/Getacientes`,headersData);
+            
             setData(datos.data);
         }
         useEffect(() => {
             envio();
         }, []);
 
-        if (localStorage.getItem('correo') === null) {
-            history('/login');
-        }
-        else {
+      
             if (localStorage.getItem('tipo') === '0') {
                 return (<SetType />)
             }
@@ -47,8 +46,8 @@ const Home = () => {
                     moverse(data[0].cedula);
                 }
             }
-            
-        }
+         
+        
 
         return (
             <Card className="mx-auto" style={{ width: '20rem' }}>
