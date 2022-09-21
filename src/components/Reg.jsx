@@ -25,7 +25,7 @@ const Reg = () => {
             history('/login');
         };  
     return(
-        <Card className="mx-auto my-5" style={{ width: '20rem' , marginTop: 'auto'}}>
+        <Card className="mx-auto my-5 logregcard" style={{ width: '20rem' , marginTop: 'auto'}}>
             <Card.Header>{
                 console.log(import.meta.env.VITE_APP_URI)
                 }

@@ -14,6 +14,14 @@ import './components/App.scss';
 import NavBar from './components/Navbar';
 import Retype from './components/Retype'
 import swDEV from './swDEV';
+import { Outlet } from 'react-router-dom';
+
+const NavLayout = () => (
+  <>
+    <NavBar />
+    <Outlet /> 
+  </>
+);
 function App() {
  
   swDEV();
@@ -22,16 +30,19 @@ function App() {
     
     <div className="App">
       <BrowserRouter>
-      <NavBar/>
+    
       <Routes>
-        <Route path="/reg" element={<Reg />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<NavLayout />}>
+      <Route path="/" element={<Home />} />
         <Route path="/p_reg" element={<P_reg />} />
         <Route path="/paciente/:cedula" element={<Paciente />} />
         <Route path="/medicamento/:cedula" element={<Medicamento />} />
         <Route path="/diario/:cedula" element={<Diario />} />
         <Route path="/Retype" element={<Retype />} />
+        </Route>
+        <Route path="/reg" element={<Reg />} />
+        <Route path="/login" element={<Login />} />
+     
 
       </Routes>
      

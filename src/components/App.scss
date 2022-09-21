@@ -17,7 +17,11 @@ border-bottom: 1px solid #c4ccde;
     border-color: #FE2472!important;
 
 }
+.logregcard{
+    border: none !important;
+}
 .card {
+   
     color: #FE2472!important;
     a{
         color: #FE2472; 
@@ -33,4 +37,11 @@ border-bottom: 1px solid #c4ccde;
 .form-check-input:checked{
     background-color:#FE2472!important;
     border-color:#FE2472!important;
+}
+.card-header{
+    background-color: #FFFFFF!important;
+    border-bottom: none !important;
+}
+.form-control{
+    border: 1px solid #FE2472 !important;
 }
