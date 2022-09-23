@@ -4,7 +4,7 @@ import BarChart from "./graphics";
 import './diario.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import { headersData } from './configs'
 const PData = (props) => {
     const  fecha = new Date(props.fecha);
     return (
@@ -20,8 +20,8 @@ const PData = (props) => {
 const Seguiminto = () => {
     const [datos,setDatos]=useState([])
     let {cedula}=useParams();
-    const obtener_datos = async() => {
-        const datos = await axios.post(`${import.meta.env.VITE_APP_URI}/GetDiario`,{email: localStorage.getItem("correo"),cedula:cedula});
+    const obtener_datos = async() => { 
+        const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/GetDiario/${cedula}`,headersData);
         setDatos(datos.data)
         console.log(datos.data);
     }
@@ -54,7 +54,7 @@ const Seguiminto = () => {
                     </table>
                 </div>
                 <div className="page-content-1">
-                <BarChart datos={datos} />
+            {/*<BarChart datos={datos} /> wea dañada */}
             </div>
             </div>
     ) 
@@ -67,7 +67,7 @@ const Diario = () => {
 
     let {cedula}=useParams();
     const obtener_paciente = async() => {
-        const res = await axios.post(`${import.meta.env.VITE_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula}); 
+        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/Getpacienteunico/${cedula}`,headersData); 
         setPaciente({...res.data});
         
     }
@@ -91,7 +91,7 @@ const Diario = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos})
+       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"cedula":cedula,datos:datos},headersData)
         window.location.reload();
     }
     

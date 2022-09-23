@@ -3,6 +3,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
+import axios from 'axios';
+import {headersData} from './configs'
 const iftipo = () => {
   const tipo2=[{
     title: 'Pacientes',
@@ -25,7 +27,11 @@ const iftipo = () => {
   {
     title: 'Cerrar sesion',
     path: '/login',
-    icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
+    icon: <FaIcons.FaDoorClosed  className=' fa-6x ' />,
+    foo: async()=>{
+      console.log("chale");
+      await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
+    }
   }];
   const tipo1=[{
     title: 'Paciente',

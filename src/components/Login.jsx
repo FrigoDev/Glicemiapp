@@ -3,7 +3,7 @@ import { Button, Form, Card } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import{headersData} from './configs'
 
 
 
@@ -23,12 +23,9 @@ const Login = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password})
-        console.log(a.data);
+        const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password},headersData);
         // redirect to home page
         if(a.data.status === 'success'){
-            localStorage.setItem('correo', a.data.Email);
-            localStorage.setItem('tipo', a.data.tipo);
             history('/');
         }
     

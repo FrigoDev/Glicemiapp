@@ -4,7 +4,7 @@ import BarChart from "./graphics";
 import './paciente.css'
 import {useParams,useNavigate,Link} from 'react-router-dom';
 import axios from 'axios';
-
+import {headersData} from './configs'
 const Dosis = (props) => {    
       
     const handleClick = async(e) => {
@@ -33,7 +33,7 @@ const Paciente = () => {
     const año = fecha.getFullYear();
     const fechaActual = año + "-" + mes + "-" + dia;
     const obtener_paciente = async() => {
-        const res = await axios.post(`${import.meta.env.VITE_APP_URI}/Getpacienteunico`,{email:localStorage.getItem('correo'),cedula:cedula});
+        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/Getpacienteunico/${cedula}`,headersData );
         const dosis =await axios.post(`${import.meta.env.VITE_APP_URI}/GetDosis`,{email:localStorage.getItem('correo'),cedula:cedula,fecha:fechaActual}); 
         setPaciente({...res.data,dosis:dosis.data});
         
