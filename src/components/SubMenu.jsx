@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom'
 
 const SidebarLink = styled(Link)`
   display: flex;
@@ -41,13 +42,18 @@ const DropdownLink = styled(Link)`
 `;
 
 const SubMenu = ({ item }) => {
-  const [subnav, setSubnav] = useState(false);
-
+  const navigate = useNavigate();
+  console.log(item.title);
   const showSubnav = () => setSubnav(!subnav);
 
   return (
     <>
-      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+      <p onClick={async()=>{
+        if (item.foo){
+          await item.foo();
+        }
+        navigate(item.path);
+      }}>
         <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>
@@ -59,16 +65,7 @@ const SubMenu = ({ item }) => {
             ? item.iconClosed
             : null}
         </div>
-      </SidebarLink>
-      {subnav &&
-        item.subNav.map((item, index) => {
-          return (
-            <DropdownLink to={item.path} key={index}>
-              {item.icon}
-              <SidebarLabel>{item.title}</SidebarLabel>
-            </DropdownLink>
-          );
-        })}
+      </p>
     </>
   );
 };
