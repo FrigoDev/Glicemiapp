@@ -3,7 +3,6 @@ import UploadImage from "./UploadImage";
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
 import axios from 'axios';
-import {headersData} from './configs';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
 
 const P_reg = () => {
@@ -18,7 +17,7 @@ const P_reg = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"imagen":image,"datosP":datos}, headersData);
+        await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"email":localStorage.getItem("correo") ,"imagen":image,"datosP":datos})
         history('/');
     }
     return(

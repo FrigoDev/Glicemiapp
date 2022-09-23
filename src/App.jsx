@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter,Route,Routes} from "react-router-dom";
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/js/src/modal';
@@ -24,10 +24,7 @@ const NavLayout = () => (
 );
 function App() {
  
-  useEffect(() => {
-    swDEV();
-  }, []);
-  
+  swDEV();
  
   return (
     
