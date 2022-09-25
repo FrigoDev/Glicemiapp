@@ -22,6 +22,7 @@ const PData = (props) => {
 
 const Home = () => {
         const [data, setData] = useState([]);
+        const [tipo, setTipo] = useState(-1);
         const history = useNavigate();
         
         const moverse = (paciente) => {
@@ -30,17 +31,18 @@ const Home = () => {
         const envio = async () => {
             const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/Getacientes`,headersData);
             
-            setData(datos.data);
+            setData(datos.data.usuarios);
+            setTipo(datos.data.tipo);
         }
         useEffect(() => {
             envio();
         }, []);
 
       
-            if (localStorage.getItem('tipo') === '0') {
+            if (tipo === 0) {
                 return (<SetType />)
             }
-            else if(localStorage.getItem('tipo') === '1'){
+            else if(tipo ===1){
                 if(data.length !== 0){
                     console.log(data[0]);
                     moverse(data[0].cedula);
