@@ -25,7 +25,7 @@ const Reg = () => {
             history('/login');
         };  
     return(
-        <Card className="mx-auto my-5 logregcard" style={{ width: '20rem' , marginTop: 'auto'}}>
+        <Card className="mx-auto my-5 logregcard" style={{ width: '22rem' , marginTop: 'auto'}}>
             <Card.Header>{
                 console.log(import.meta.env.VITE_APP_URI)
                 }
@@ -36,6 +36,10 @@ const Reg = () => {
                     <Form.Group className="mb-3">
                         <Form.Label>Nombre</Form.Label>
                         <Form.Control type="text" name="name" placeholder="Nombre" onChange={handleChange} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Apellidos</Form.Label>
+                        <Form.Control type="text" name="apellidos" placeholder="Apellidos" onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Teléfono</Form.Label>
@@ -49,7 +53,10 @@ const Reg = () => {
                         <Form.Label>Contraseña</Form.Label>
                         <Form.Control type="password" placeholder="Contraseña" name="password" onChange={handleChange}/>
                     </Form.Group>
-
+                    <Form.Group className="mb-3" controlId="formBasicPasswordConf">
+                        <Form.Label>Confirmar contraseña</Form.Label>
+                        <Form.Control type="password" placeholder="Confirmar contraseña" name="confPassword" onChange={handleChange}/>
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Label className='reglabel'>¿Ya tienes una cuenta? <Link to="/login">Ingresa aquí</Link></Form.Label>            
                     </Form.Group>

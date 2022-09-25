@@ -21,23 +21,23 @@ const Medicamento = () => {
     }
 
     return (
-        <Card className="mx-auto" style={{ width: '20rem', margin: 'auto' }}>
+        <Card className="mx-auto" style={{ width: '22rem', margin: 'auto' }}>
             <Card.Header>
                 <h2 className="fw-bold text-center">Medicamento</h2>
             </Card.Header>
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
-                        <Form.Label className="text-center">Medicamento</Form.Label>
+                        <Form.Label className="text-center">Nombre del Medicamento</Form.Label>
                         <Form.Control type="text" name="medicamento" onChange={handleonChange} placeholder="Medicamento" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Dosis</Form.Label>
+                        <Form.Label>Dosis Ingerida</Form.Label>
                         <Form.Control type="text" name="dosis" onChange={handleonChange} placeholder="Dosis" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Número de dosis</Form.Label>
-                        <Form.Control type="text" name="numeroDosis" onChange={handleonChange} placeholder="Número de dosis" />
+                        <Form.Label>Hora de ingesta</Form.Label>
+                        <Form.Control type="time" name="numeroDosis" onChange={handleonChange} />
                     </Form.Group>
                     <div className="text-center">
                     <Button variant="primary"  type="submit">

@@ -54,7 +54,7 @@ const Seguiminto = () => {
                     </table>
                 </div>
                 <div className="page-content-1">
-            {/*<BarChart datos={datos} /> wea dañada */}
+            <BarChart datos={datos} />
             </div>
             </div>
     ) 

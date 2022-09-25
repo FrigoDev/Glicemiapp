@@ -36,7 +36,7 @@ const Login = () => {
 
     return (
         
-    <Card className="mx-auto logregcard" style={{ width: '20rem', marginTop: '50px' }}>
+    <Card className="mx-auto logregcard" style={{ width: '22rem', marginTop: '50px' }}>
         <svg width="8rem" height="8rem" viewBox="0 0 148 213" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M139.018 42.3713C142.228 39.1632 147.713 41.5473 147.556 46.0824L141.969 207.877C141.831 211.872 137.289 214.093 134.044 211.752L37.7035 142.232C36.7672 141.557 36.0934 140.579 35.7963 139.463L0.39317 6.5688C-0.963456 1.47635 5.46771 -1.9717 8.96758 1.97165L85.5808 88.2924C87.4929 90.4467 90.8249 90.5475 92.8606 88.5125L139.018 42.3713Z" fill="#FE2472"/>
 </svg>
@@ -52,7 +52,7 @@ const Login = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={handlechange} />
+                    <Form.Control type="email" placeholder="Ingresar email" name="email" value={email} onChange={handlechange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -60,14 +60,14 @@ const Login = () => {
                     <Form.Control type="password" placeholder="Contraseña" name="password" value={password} onChange={handlechange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>            
+                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>
+                    <Form.Label className='reglabel'>¿Olvidaste tu contraseña? <Link to="/recuperar-contraseña">recuperala aquí</Link></Form.Label>            
                 </Form.Group>
                 <div className="text-center">
                 <Button variant="primary"  type="submit">
                 Iniciar Sesión
                     </Button>
                 </div>
-                
             </Form>
         </Card.Body>
     </Card>
