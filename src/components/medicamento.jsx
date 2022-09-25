@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Button, Form, Card } from 'react-bootstrap'; 
 import {useParams,useNavigate} from 'react-router-dom';
 import axios from "axios";
-
+import {headersData} from "./configs"
 const Medicamento = () => {
     const history = useNavigate();
     const {cedula}=useParams();
@@ -16,7 +16,7 @@ const Medicamento = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${import.meta.env.VITE_APP_URI}/medicamento`, {"email":localStorage.getItem('correo'),"cedula":cedula,datos:datos}) 
+        await axios.post(`${import.meta.env.VITE_APP_URI}/medicamento/${cedula}`,{datos},headersData)
         history(`/paciente/${cedula}`)
     }
 

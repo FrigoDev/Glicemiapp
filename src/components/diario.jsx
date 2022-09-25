@@ -91,7 +91,7 @@ const Diario = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"cedula":cedula,datos:datos},headersData)
+       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"cedula":cedula,datos:datos},headersData)  
         window.location.reload();
     }
     
