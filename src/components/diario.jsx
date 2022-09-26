@@ -67,7 +67,7 @@ const Diario = () => {
 
     let {cedula}=useParams();
     const obtener_paciente = async() => {
-        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/Getpacienteunico/${cedula}`,headersData); 
+        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/paciente/${cedula}`,headersData); 
         setPaciente({...res.data});
         
     }

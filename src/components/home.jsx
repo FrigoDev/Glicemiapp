@@ -29,7 +29,7 @@ const Home = () => {
             history(`/paciente/${paciente}`);
         } 
         const envio = async () => {
-            const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/Getacientes`,headersData);
+            const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/GetPacientes`,headersData);
             
             setData(datos.data.usuarios);
             setTipo(datos.data.tipo);

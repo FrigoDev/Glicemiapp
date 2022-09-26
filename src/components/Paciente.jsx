@@ -33,7 +33,7 @@ const Paciente = () => {
     const año = fecha.getFullYear();
     const fechaActual = año + "-" + mes + "-" + dia;
     const obtener_paciente = async() => {
-        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/Getpacienteunico/${cedula}`,headersData );
+        const res = await axios.get(`${import.meta.env.VITE_APP_URI}/paciente/${cedula}`,headersData );
         const dosis =await axios.get(`${import.meta.env.VITE_APP_URI}/GetDosis/${cedula}`,headersData); 
         setPaciente({...res.data,dosis:dosis.data});
         

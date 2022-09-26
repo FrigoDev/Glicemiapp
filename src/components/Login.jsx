@@ -1,5 +1,5 @@
 import React, {useState}   from "react";
-import { Button, Form, Card } from 'react-bootstrap'; 
+import { Button, Form, Card,Row } from 'react-bootstrap'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -56,12 +56,14 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Contraseña</Form.Label>
+                    <Row>
+                        <Form.Label className="col-4">Contraseña</Form.Label>
+                        <Link className="col-8 text-end " to="/recuperar-contrasena">¿Olvidaste tu contraseña?</Link>
+                   </Row>
                     <Form.Control type="password" placeholder="Contraseña" name="password" value={password} onChange={handlechange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>
-                    <Form.Label className='reglabel'>¿Olvidaste tu contraseña? <Link to="/recuperar-contraseña">recuperala aquí</Link></Form.Label>            
+                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>          
                 </Form.Group>
                 <div className="text-center">
                 <Button variant="primary"  type="submit">

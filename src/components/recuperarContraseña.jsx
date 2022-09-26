@@ -14,7 +14,7 @@ const RecuperarContraseña = () => {
             </Card.Header>
             <Card.Body>
                 <Form>
-                    <div>Se enviara un enlace para restablecer su contraseña a su correo.</div>
+                    <div className="text-dark">Se enviara un enlace para restablecer su contraseña a su correo.</div>
                     <Form.Group className="mb-3">
                         <Form.Label>Correo</Form.Label>
                         <Form.Control type="text" name="name" placeholder="Correo" />

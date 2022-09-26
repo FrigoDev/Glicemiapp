@@ -11,11 +11,11 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
-    "chart.js": "^3.9.1",
+    "chart.js": "3.9.1",
     "mdb-react-ui-kit": "^4.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
-    "react-chartjs-2": "^3.3.0",
+    "react-chartjs-2": "3.3.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.2",
     "react-icons": "^4.4.0",
