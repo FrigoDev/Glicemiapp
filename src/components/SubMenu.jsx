@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom'
 
-const SidebarLink = styled(Link)`
+const SidebarItem= styled(Link)`
   display: flex;
   color: #FE2472;
-  justify-content: space-between;
   align-items: center;
   padding: 20px;
   list-style: none;
@@ -54,10 +53,10 @@ const SubMenu = ({ item }) => {
         }
         navigate(item.path);
       }}>
-        <div>
+        <SidebarItem>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>
-        </div>
+        </SidebarItem>
         <div>
           {item.subNav && subnav
             ? item.iconOpened
