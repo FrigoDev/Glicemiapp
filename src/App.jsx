@@ -17,6 +17,7 @@ import NavBar from './components/Navbar';
 import Retype from './components/Retype'
 import swDEV from './swDEV';
 import { Outlet } from 'react-router-dom';
+import P_edit from './components/P_edit';
 
 const NavLayout = () => (
   <>
@@ -36,22 +37,23 @@ function App() {
     <div className="App">
       <BrowserRouter>
     
-      <Routes>
-      <Route path="/" element={<NavLayout />}>
-      <Route path="/" element={<Home />} />
-        <Route path="/p_reg" element={<P_reg />} />
-        <Route path="/paciente/:cedula" element={<Paciente />} />
-        <Route path="/medicamento/:cedula" element={<Medicamento />} />
-        <Route path="/diario/:cedula" element={<Diario />} />
-        <Route path="/Retype" element={<Retype />} />
-        </Route>
-        <Route path="/reg" element={<Reg />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
-        <Route path="/restablecer-contraseña" element={<RestablecerContraseña />} />
-     
+        <Routes>
 
-      </Routes>
+          <Route path="/" element={<NavLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/p_reg" element={<P_reg />} />
+          <Route path="/p_edit/:cedula" element={<P_edit />} />
+          <Route path="/paciente/:cedula" element={<Paciente />} />
+          <Route path="/medicamento/:cedula" element={<Medicamento />} />
+          <Route path="/diario/:cedula" element={<Diario />} />
+          <Route path="/Retype" element={<Retype />} />
+          </Route>
+          <Route path="/reg" element={<Reg />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
+          <Route path="/restablecer-contraseña" element={<RestablecerContraseña />} />
+      
+        </Routes>
      
       </BrowserRouter>
   </div>

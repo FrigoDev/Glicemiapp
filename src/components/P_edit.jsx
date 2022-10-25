@@ -6,7 +6,7 @@ import axios from 'axios';
 import {headersData} from './configs';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
 
-const P_reg = () => {
+const P_edit = () => {
     const history = useNavigate();
     const [image, setImage] = useState('');
     const [datos, setDatos] = useState({}); 
@@ -69,4 +69,4 @@ const P_reg = () => {
     </Card> 
     );
 }
-export default P_reg
+export default P_edit

@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import { Button, Card, Image } from 'react-bootstrap';
+import { Button, Card, Image, Modal } from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -9,14 +9,42 @@ import SetType from './set_tipo';
 //recibir props y retornar una vista
 const PData = (props) => {
     
+    const [show, setShow] = useState(false);
+
     return (
-        <tr class="unread" onClick={()=>{props.moverse(props.cedula)}}>
-            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={props.imagen} className='img-fluid' roundedCircle /></td>}
-            <td className="text-center align-middle">
+        <tr class="unread">
+            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td onClick={()=>{props.moverse(props.cedula)}}><Image src={props.imagen} className='img-fluid' roundedCircle /></td>}
+            <td className="text-center align-middle" onClick={()=>{props.moverse(props.cedula)}}>
                 <h6 class="mb-1">{props.name}</h6>
                 <p class="m-0">{props.description}</p>
             </td>
+            <td className="text-center align-middle">
+                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link><div onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+            </td>
+            <ModalEliminar show={show} setShow={setShow} />
         </tr>
+    );
+}
+
+const ModalEliminar = ({show,setShow}) => {
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Eliminar paciente</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>¿Está seguro que desea eliminar este paciente?</Modal.Body>
+            <Modal.Footer className="justify-content-between">
+                <Button variant="secondary" onClick={handleClose}>
+                    Cerrar
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    Guardar Cambios
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
 }
 
@@ -52,7 +80,7 @@ const Home = () => {
         
 
         return (
-            <Card className="mx-auto" style={{ width: '20rem' }}>
+            <Card className="mx-auto" style={{ width: '24rem' }}>
                 <Card.Header>
                     <h2 className="fw-bold text-center">Pacientes</h2>
                 </Card.Header>

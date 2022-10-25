@@ -58,12 +58,12 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Row>
                         <Form.Label className="col-4">Contraseña</Form.Label>
-                        <Link className="col-8 text-end " to="/recuperar-contrasena">¿Olvidaste tu contraseña?</Link>
                    </Row>
                     <Form.Control type="password" placeholder="Contraseña" name="password" value={password} onChange={handlechange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label>          
+                    <Form.Label className='reglabel'>¿No estas registrado? <Link to="/reg">registrate aquí</Link></Form.Label> 
+                    <Form.Label className='reglabel'>¿Olvidaste tu contraseña? <Link to="/recuperar-contrasena">recupérala aquí</Link></Form.Label> 
                 </Form.Group>
                 <div className="text-center">
                 <Button variant="primary"  type="submit">

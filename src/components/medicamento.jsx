@@ -46,6 +46,25 @@ const Medicamento = () => {
                 </div> 
                 </Form>
                 
+                <table class="table table-hover">
+                    <tbody>
+                        {
+                            data.map((item,i) =>
+                                {
+                                    return(
+                                        <tr>
+                                            <td>Check medicamento</td>
+                                            <td>s{/*item.medicamento*/}</td>
+                                            <td>{/*item.dosis*/}</td>
+                                            <td>{/*item.numeroDosis*/}</td>
+                                        </tr>
+                                    )
+                                })
+                        }
+                    </tbody>
+                </table>
+
+
             </Card.Body>
         </Card>
     );
