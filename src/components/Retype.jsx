@@ -34,7 +34,7 @@ const P_reg = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {"tipo":{tipo:1}},headersData); 
+        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {"tipo":1},headersData); 
         localStorage.setItem('tipo', 1);
         await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`,
          {"imagen":image,"datosP":{...datos,nombre:user.Nombre,telefono:user.Telefono}}

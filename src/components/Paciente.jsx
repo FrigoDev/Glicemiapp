@@ -51,7 +51,7 @@ const Paciente = () => {
                 <Card.Header>
                     <Row>
                             <Col className="text-center">
-                                <Image className="my-1" src={paciente.foto===""?"userIcon.png":paciente.foto} roundedCircle/>
+                                <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/"+paciente.foto} roundedCircle/>
                                 <h2>{paciente.nombre}</h2>
                                 <h4>Edad: {paciente.edad}</h4>
                             </Col>

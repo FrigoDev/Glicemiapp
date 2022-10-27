@@ -12,9 +12,9 @@ const PData = (props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <tr class="unread">
-            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td onClick={()=>{props.moverse(props.cedula)}}><Image src={props.imagen} className='img-fluid' roundedCircle /></td>}
-            <td className="text-center align-middle" onClick={()=>{props.moverse(props.cedula)}}>
+        <tr class="unread" onClick={()=>{props.moverse(props.cedula)}}>
+            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={import.meta.env.VITE_APP_URI+"/"+props.imagen} className='img-fluid' roundedCircle /></td>}
+            <td className="text-center align-middle">
                 <h6 class="mb-1">{props.name}</h6>
                 <p class="m-0">{props.description}</p>
             </td>

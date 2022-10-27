@@ -2,12 +2,13 @@ import React from "react";
 import { Row, Col, Image, Button, Card,Modal} from 'react-bootstrap';
 import axios from 'axios';
 import {useNavigate}  from 'react-router-dom';
+import {headersData} from './configs'
 
 const Set_tipo = () => {
     const history = useNavigate();
     const cambiar_tipo = async(tipo) => {
         console.log(tipo);
-        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {"tipo":{tipo},"email":localStorage.getItem('correo')} )
+        await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {tipo} ,headersData)
         localStorage.setItem('tipo', tipo);
         window.location.reload();  
     }
