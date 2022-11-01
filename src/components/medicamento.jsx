@@ -1,12 +1,19 @@
 import React, {useState} from "react";
-import { Button, Form, Card } from 'react-bootstrap'; 
+import { Button, Form, Card,Row,Col } from 'react-bootstrap'; 
 import {useParams,useNavigate} from 'react-router-dom';
+import {List,ListItem,ListItemText,Divider,IconButton,Card as MCard} from '@mui/material'
+import {Delete as DeleteIcon,Add as AddIcon} from '@mui/icons-material/';
+import moment from 'moment';
 import axios from "axios";
-import {headersData} from "./configs"
+import {headersData} from "./configs.jsx"
+import Modal from "./modales";
+
+
 const Medicamento = () => {
     const history = useNavigate();
     const {cedula}=useParams();
     const [datos, setDatos] = useState({})
+    const [horarios,setHorarios]=useState([])
 
     const handleonChange = (e) => {
         setDatos({
@@ -16,17 +23,12 @@ const Medicamento = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${import.meta.env.VITE_APP_URI}/medicamento/${cedula}`,{datos},headersData)
+        await axios.post(`${import.meta.env.VITE_APP_URI}/medicamento/${cedula}`,{...datos, hora:Array.from(new Set(horarios))},headersData)
         history(`/paciente/${cedula}`)
     }
 
     return (
-        <Card className="mx-auto" style={{ width: '22rem', margin: 'auto' }}>
-            <Card.Header>
-                <h2 className="fw-bold text-center">Medicamento</h2>
-            </Card.Header>
-            <Card.Body>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="mx-auto" style={{ width: '16rem', margin: 'auto' }}>
                     <Form.Group className="mb-3">
                         <Form.Label className="text-center">Nombre del Medicamento</Form.Label>
                         <Form.Control type="text" name="medicamento" onChange={handleonChange} placeholder="Medicamento" />
@@ -36,9 +38,62 @@ const Medicamento = () => {
                         <Form.Control type="text" name="dosis" onChange={handleonChange} placeholder="Dosis" />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Hora de ingesta</Form.Label>
-                        <Form.Control type="time" name="numeroDosis" onChange={handleonChange} />
+                        <Row>
+                         <Col md={9}>
+                            <Form.Label>Hora de ingesta</Form.Label>
+                            <Form.Control type="time" name="hora" onChange={handleonChange} />
+                        </Col>
+                        <Col md={3} className="d-flex align-items-end">
+                            <Button variant="primary"  onClick={()=>{
+                                setHorarios([...horarios,datos.hora])
+                                console.log(horarios);
+                            }}>
+                                <AddIcon/>
+                            </Button>
+                        </Col>
+                        </Row>
+
                     </Form.Group>
+                    <div className="text-center">
+                    
+                    </div>
+                    {
+                        horarios.length>0?
+                        <MCard className="my-3">
+                    <List
+                        sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 150,
+                            '& ul': { padding: 0 },
+                        }}
+                        subheader={<li />}
+                        >
+                        {<li>
+                                <ul>
+                                    {[...new Set(horarios)].map((item, i) => (
+                                    <ListItem
+                                    secondaryAction={
+                                    <IconButton edge="end" aria-label="delete" onClick={()=>{setHorarios([...new Set(horarios)].filter((x)=>x!==item))}}>
+                                        <DeleteIcon/>
+                                    </IconButton>
+                                    }
+                                    >
+                                    <ListItemText
+                                    primary={`${
+                                        moment(item, 'HH:mm').format('hh:mm A')
+                                    }`}
+                                    />
+                                    </ListItem>
+                                    ))}
+                                </ul>
+                            </li>}
+                        </List>
+                    </MCard>:null
+                    }
                     <div className="text-center">
                     <Button variant="primary"  type="submit">
                         Registrar
@@ -46,27 +101,25 @@ const Medicamento = () => {
                 </div> 
                 </Form>
                 
-                <table class="table table-hover">
-                    <tbody>
-                        {
-                            data.map((item,i) =>
-                                {
-                                    return(
-                                        <tr>
-                                            <td>Check medicamento</td>
-                                            <td>s{/*item.medicamento*/}</td>
-                                            <td>{/*item.dosis*/}</td>
-                                            <td>{/*item.numeroDosis*/}</td>
-                                        </tr>
-                                    )
-                                })
-                        }
-                    </tbody>
-                </table>
-
-
-            </Card.Body>
-        </Card>
+            
     );
 }
-export default Medicamento;
+
+const MostrarModal=()=>{
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    return(
+        <>
+        <Button variant="primary" onClick={handleShow}>
+            Launch demo modal
+        </Button>
+
+        <Modal open={show}  setOpen={setShow} nombre={"Nuevo medicamento"} >
+            <Medicamento/>
+        </Modal>
+        </>
+    )
+}
+
+export default MostrarModal;
