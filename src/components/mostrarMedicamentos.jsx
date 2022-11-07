@@ -20,7 +20,7 @@ import axios from 'axios';
 
     useEffect(()=>{
         obtener_medicamentos();
-    })
+    },[])
 
     return(
         <div>

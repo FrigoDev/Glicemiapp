@@ -45,15 +45,26 @@ const iftipo = () => {
   {
     title: 'Cerrar sesion',
     path: '/login',
+    foo: async()=>{
+      console.log("chale");
+      await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
+    },
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
   }];
- if(localStorage.getItem('tipo')== 1){
-return(
-  tipo1
-  )
- }
- else{
-   return(tipo2)
- }
+  const tipo0=[{
+    title: 'Cerrar sesion',
+    path: '/login',
+    foo: async()=>{
+      console.log("chale");
+      await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
+    },
+    icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
+  }];
+  
+ if(localStorage.getItem('tipo')== 1)return(tipo1)
+ if(localStorage.getItem('tipo')== 2)return(tipo2)
+ else return(tipo0)
+
+
   }
 export const SidebarData =  iftipo();

@@ -51,7 +51,7 @@ function App() {
           <Route path="/reg" element={<Reg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
-          <Route path="/restablecer-contraseña" element={<RestablecerContraseña />} />
+          <Route path="/restablecer-contrasena/:token" element={<RestablecerContraseña />} />
       
         </Routes>
      

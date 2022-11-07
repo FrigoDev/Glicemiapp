@@ -24,14 +24,9 @@ const Login = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password},headersData);
-        // redirect to home page
         if(a.data.status === 'success'){
             history('/');
         }
-    
-
-        
-
     }
 
     return (
