@@ -12,14 +12,15 @@ const PData = (props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <tr class="unread" onClick={()=>{props.moverse(props.cedula)}}>
-            {props.imagen === ''?<td><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={import.meta.env.VITE_APP_URI+"/"+props.imagen} className='img-fluid' roundedCircle /></td>}
-            <td className="text-center align-middle">
+        <tr class="unread">
+            {props.imagen === ''?<td onClick={()=>{props.moverse(props.cedula)}}><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={import.meta.env.VITE_APP_URI+"/"+props.imagen} className='img-fluid' roundedCircle /></td>}
+            <td className="text-center align-middle" onClick={()=>{props.moverse(props.cedula)}}>
                 <h6 class="mb-1">{props.name}</h6>
                 <p class="m-0">{props.description}</p>
             </td>
             <td className="text-center align-middle">
-                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link><div onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link>
+                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
             </td>
             <ModalEliminar show={show} setShow={setShow} />
         </tr>
@@ -41,7 +42,7 @@ const ModalEliminar = ({show,setShow}) => {
                     Cerrar
                 </Button>
                 <Button variant="primary" onClick={handleClose}>
-                    Guardar Cambios
+                    Eliminar paciente
                 </Button>
             </Modal.Footer>
         </Modal>

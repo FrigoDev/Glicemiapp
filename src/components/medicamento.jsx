@@ -5,6 +5,7 @@ import {List,ListItem,ListItemText,Divider,IconButton,Card as MCard} from '@mui/
 import {Delete as DeleteIcon,Add as AddIcon} from '@mui/icons-material/';
 import moment from 'moment';
 import axios from "axios";
+import VerMedicamento from "./mostrarMedicamentos";
 import {headersData} from "./configs.jsx"
 import Modal from "./modales";
 
@@ -111,9 +112,18 @@ const MostrarModal=()=>{
     const handleShow = () => setShow(true);
     return(
         <>
-        <Button variant="primary" onClick={handleShow}>
-            Launch demo modal
-        </Button>
+            <Card className="mx-auto" style={{ width: '28rem' }}>
+                <Card.Body>
+                    <Card.Title className="text-center">Medicamentos</Card.Title>
+                    <VerMedicamento/>
+                    <div className="text-center">
+                        <Button variant="primary" onClick={handleShow}>
+                            Registrar medicamento
+                        </Button>
+                    </div>
+                </Card.Body>
+            </Card>
+        
 
         <Modal open={show}  setOpen={setShow} nombre={"Nuevo medicamento"} >
             <Medicamento/>

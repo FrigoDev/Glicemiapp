@@ -2,7 +2,6 @@ import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
 import BarChart from "./graphics";
 import './paciente.css'
-import VerMedicamentos from "./mostrarMedicamentos";
 import {useParams,useNavigate,Link} from 'react-router-dom';
 import axios from 'axios';
 import {headersData} from './configs'
@@ -94,7 +93,6 @@ const Paciente = () => {
                     </div>
                 </Card.Body>
             </Card>
-            <VerMedicamentos/>
         </div>
     );
 }

@@ -1,16 +1,35 @@
 import React, {useState,useEffect} from "react";
-import {useParams,useNavigate} from 'react-router-dom';
+import {Link,useParams,useNavigate} from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import {Modal, Button} from 'react-bootstrap';
 import {headersData} from "./configs";
 import axios from 'axios';
 
+const ModalEliminar = ({show,setShow}) => {
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-
-
-
-
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Eliminar medicamento</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>¿Está seguro que desea eliminar este medicamento?</Modal.Body>
+            <Modal.Footer className="justify-content-between">
+                <Button variant="secondary" onClick={handleClose}>
+                    Cerrar
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    Eliminar medicamento
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
 
  const verMedicamentos=()=>{
-    
+    const [show, setShow] = useState(false);
     const {cedula}=useParams();
     const [medicamentos,setMedicamentos]=useState([])
 
@@ -22,28 +41,52 @@ import axios from 'axios';
         obtener_medicamentos();
     },[])
 
+    if(medicamentos.length===0){
+        return(
+            <>
+                <h5 className="text-center">No hay medicamentos</h5>
+            </>
+        )
+    }
+
     return(
-        <div>
-            <h1>Medicamentos</h1>
+        <>
             <div>
+                <table class="table table-hover">
+                    <tbody className="text-center align-items-center">
+                        <tr>
+                            <th className="text-center">Medicamento</th>
+                            <th className="text-center">Dosis</th>
+                            <th className="text-center">Horario</th>
+                            <th className="text-center">Check</th>
+                            <th></th>
+                        </tr>
                 {medicamentos.map((medicamento,index)=>{
                     return(
-                        <div key={index}>
-                            <h2>{medicamento.nombre}</h2>
-                            <h3>Dosis: {medicamento.dosis}</h3>
-                            <h3>Horarios: {medicamento.horarios.map((horario,index)=>{
-                                return(
-                                    <div key={index}>
-                                        <h4>{horario}</h4>
-                                    </div>
-                                )
-                            })}</h3>
-                        </div>
+                        <tr key={index}>
+                            <td className="text-center">{medicamento.nombre}</td>
+                            <td className="text-center">{medicamento.dosis}</td>
+                            <td className="text-center">{medicamento.horarios.map((horario,index)=>{
+                            return(
+                                <div key={index}>
+                                   {horario}
+                                </div>
+                            )
+                            })}</td>
+                            <td className="text-center"><input type="checkbox" id="check" name="check" value="check"></input></td>
+                            <td className="text-center align-middle">
+                                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link>
+                                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+                            </td>
+                            <ModalEliminar show={show} setShow={setShow} />
+                        </tr>
                     )
                 }
                 )}
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </>
     )
 
  }
