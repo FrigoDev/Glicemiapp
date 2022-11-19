@@ -101,7 +101,7 @@ const Diario = () => {
                 <Card.Header>
                     <Row>
                         <Col className="mx-auto text-center">
-                            <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/"+paciente.foto} roundedCircle />
+                            <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/public/"+paciente.foto} roundedCircle />
                             <h2 className="fs-3">{paciente.nombre}</h2>
                             <h4 className="fs-5">Edad:{paciente.edad}</h4>
                         </Col>

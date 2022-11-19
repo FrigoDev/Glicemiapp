@@ -32,11 +32,12 @@ const ModalEliminar = ({show,setShow}) => {
     const [show, setShow] = useState(false);
     const {cedula}=useParams();
     const [medicamentos,setMedicamentos]=useState([])
-
+    const setUso=(id,hora,check)=>{
+        axios.put(`${import.meta.env.VITE_APP_URI}/actualizarCheks`,{hora,id,check},headersData)
+    }
     const obtener_medicamentos=async()=>{
         const res=await axios.get(`${import.meta.env.VITE_APP_URI}/paciente/medicamento/${cedula}`,headersData);
         setMedicamentos(res.data);}
-
     useEffect(()=>{
         obtener_medicamentos();
     },[])
@@ -69,11 +70,21 @@ const ModalEliminar = ({show,setShow}) => {
                             <td className="text-center">{medicamento.horarios.map((horario,index)=>{
                             return(
                                 <div key={index}>
-                                   {horario}
+                                   {horario.hora}
                                 </div>
                             )
                             })}</td>
-                            <td className="text-center"><input type="checkbox" id="check" name="check" value="check"></input></td>
+                            <td className="text-center">
+                                {
+                                    medicamento.horarios.map((horario,index)=>{
+                                        return(
+                                            <div key={index}>
+                                                <input type="checkbox" defaultChecked={horario.fecha} onChange={(e)=>{setUso(medicamento.id,horario.hora,e.target.checked)}}/>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </td>
                             <td className="text-center align-middle">
                                 <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link>
                                 <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>

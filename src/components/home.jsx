@@ -5,21 +5,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import{headersData} from './configs'
 import SetType from './set_tipo';
-
+import ModalP from './Modales'
+import Editar from './P_reg copy'
 //recibir props y retornar una vista
-const PData = (props) => {
-    
+const PData = ({paciente,moverse,editar}) => {
     const [show, setShow] = useState(false);
-
     return (
         <tr class="unread">
-            {props.imagen === ''?<td onClick={()=>{props.moverse(props.cedula)}}><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={import.meta.env.VITE_APP_URI+"/"+props.imagen} className='img-fluid' roundedCircle /></td>}
-            <td className="text-center align-middle" onClick={()=>{props.moverse(props.cedula)}}>
-                <h6 class="mb-1">{props.name}</h6>
-                <p class="m-0">{props.description}</p>
+            {paciente.imagen === ''?<td onClick={()=>{moverse(paciente.cedula)}}><FaIcons.FaUserCircle className=' fa-5x text-black' /></td>:<td><Image src={import.meta.env.VITE_APP_URI+"/public/"+paciente.foto} className='img-fluid' roundedCircle /></td>}
+            <td className="text-center align-middle" onClick={()=>{moverse(paciente.cedula)}}>
+                <h6 class="mb-1">{paciente.nombre +" "+ paciente.apellido}</h6>
+                <p class="m-0">{`${paciente.cedula}`}</p>
             </td>
             <td className="text-center align-middle">
-                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link>
+                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x text-black my-2"/></div>
                 <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
             </td>
             <ModalEliminar show={show} setShow={setShow} />
@@ -52,8 +51,9 @@ const ModalEliminar = ({show,setShow}) => {
 const Home = () => {
         const [data, setData] = useState([]);
         const [tipo, setTipo] = useState(-1);
+        const [show,setShow] = useState(false);
+        const [editar,setEditar] = useState({});
         const history = useNavigate();
-        
         const moverse = (paciente) => {
             history(`/paciente/${paciente}`);
         } 
@@ -99,7 +99,7 @@ const Home = () => {
                                 {
                                     data.map((item,i) => 
                                     {
-                                        return <PData key={i} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
+                                        return <PData key={i} editar={(data)=>{setEditar(data);setShow(true);}} paciente={item} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
                                     })
                                 }
                             </tbody>
@@ -109,8 +109,20 @@ const Home = () => {
                         </div>
                     </div>
                 </Card.Body>
+                <ModalP setOpen={setShow} nombre='paciente' open={show}><Editar
+                changeData={(edited,cedula)=>{
+                    setData(data.map((item)=>{
+                        if(item.cedula === cedula){
+                            return edited;
+                        }
+                        return item;
+                    }))
+                    setShow(false);
+                }}
+                userdata={editar}></Editar></ModalP>
             </Card>
         );
     }
+
 
     export default Home

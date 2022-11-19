@@ -26,7 +26,7 @@ const Dosis = (props) => {
 const Paciente = () => {
     const history = useNavigate();
     const [paciente, setPaciente] = useState({});
-    let {cedula}=useParams();
+    const {cedula}=useParams();
     const fecha = new Date();
     const dia = fecha.getDate();
     const mes = fecha.getMonth() + 1;
@@ -34,9 +34,7 @@ const Paciente = () => {
     const fechaActual = año + "-" + mes + "-" + dia;
     const obtener_paciente = async() => {
         const res = await axios.get(`${import.meta.env.VITE_APP_URI}/paciente/${cedula}`,headersData );
-        const dosis =await axios.get(`${import.meta.env.VITE_APP_URI}/GetDosis/${cedula}`,headersData); 
-        setPaciente({...res.data,dosis:dosis.data});
-        
+        setPaciente({...res.data}); 
     }
     useEffect(() => {
         obtener_paciente();
@@ -49,7 +47,7 @@ const Paciente = () => {
                 <Card.Header>
                     <Row>
                             <Col className="text-center">
-                                <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/"+paciente.foto} roundedCircle/>
+                                <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/public/"+paciente.foto} roundedCircle/>
                                 <h2>{paciente.nombre}</h2>
                                 <h4>Edad: {paciente.edad}</h4>
                             </Col>
