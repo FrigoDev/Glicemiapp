@@ -86,8 +86,8 @@ const ModalEliminar = ({show,setShow}) => {
                                 }
                             </td>
                             <td className="text-center align-middle">
-                                <Link to="#"><FaIcons.FaPen className="fa-2x text-black my-2"/></Link>
-                                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+                                <Link to="#"><FaIcons.FaPen className="fa-2x element_icon my-2"/></Link>
+                                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
                             </td>
                             <ModalEliminar show={show} setShow={setShow} />
                         </tr>

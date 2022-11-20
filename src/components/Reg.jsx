@@ -1,5 +1,5 @@
 import React , {useState}  from "react";
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
 
@@ -12,17 +12,55 @@ const headersData = {
     },
     withCredentials: true,
   }
+
 const Reg = () => {
     const history = useNavigate();
-    const [user, setUser] = useState({}); 
+    const [user, setUser] = useState({});
+    const [error, setError] = useState(false);
     const handleChange = (e) => {
     const { name, value } = e.target;
             setUser({ ...user, [name]: value });
+    //Here is the problem, I don't know how to set the values of the inputs
         };
         const  handleSubmit = async (e) => { 
+            const emailregex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             e.preventDefault();
-            await axios.post(`${import.meta.env.VITE_APP_URI}/register`, user,headersData)
-            history('/login');
+            const { name, apellidos, telefono, email, password, confPassword:password2 } = user;
+            if(!email || !name || !apellidos || !telefono || !password){
+                setError("Todos los campos son obligatorios");
+                return;
+            }
+            if(!emailregex.test(email)){
+                setError("El email no es válido");
+                return;
+            }
+            if(password.length<8){
+                setError("La contraseña debe tener al menos 8 caracteres");
+                return;
+            }
+            if(!RegExp(/^[0-9]{10}$/).test(telefono)){
+                setError("El teléfono no es válido");
+                return;
+            }
+            if(!RegExp(/^[a-zA-Z ]+$/).test(name)){
+                setError("El nombre no es válido");
+                return;
+            }
+            if(!RegExp(/^[a-zA-Z ]+$/).test(apellidos)){
+                setError("Los apellidos no son válidos");
+                return;
+            }
+            if(password !== password2){
+                setError("Las contraseñas no coinciden");
+                return;
+            }
+            try {
+                    await axios.post(`${import.meta.env.VITE_APP_URI}/register`, user, headersData);
+                    history('/');
+                }
+            catch (error) {
+                setError(error.response.data);
+            }
         };  
     return(
         <Card className="mx-auto my-5 logregcard" style={{ width: '22rem' , marginTop: 'auto'}}>
@@ -61,6 +99,9 @@ const Reg = () => {
                         <Form.Label className='reglabel'>¿Ya tienes una cuenta? <Link to="/login">Ingresa aquí</Link></Form.Label>            
                     </Form.Group>
                     <div className="text-center">
+                        <Alert variant="danger" className="mt-3" show={error}>
+                            {error}
+                        </Alert>
                         <Button variant="primary"  type="submit">
                             Registrar
                         </Button>   

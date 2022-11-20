@@ -6,7 +6,7 @@ import axios from 'axios';
 import{headersData} from './configs'
 import SetType from './set_tipo';
 import ModalP from './Modales'
-import Editar from './P_reg copy'
+import Editar from './P_edit'
 //recibir props y retornar una vista
 const PData = ({paciente,moverse,editar}) => {
     const [show, setShow] = useState(false);
@@ -18,8 +18,8 @@ const PData = ({paciente,moverse,editar}) => {
                 <p class="m-0">{`${paciente.cedula}`}</p>
             </td>
             <td className="text-center align-middle">
-                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x text-black my-2"/></div>
-                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x element_icon my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
             </td>
             <ModalEliminar show={show} setShow={setShow} />
         </tr>
@@ -109,7 +109,7 @@ const Home = () => {
                         </div>
                     </div>
                 </Card.Body>
-                <ModalP setOpen={setShow} nombre='paciente' open={show}><Editar
+                <ModalP setOpen={setShow} nombre='Editar paciente' open={show}><Editar
                 changeData={(edited,cedula)=>{
                     setData(data.map((item)=>{
                         if(item.cedula === cedula){

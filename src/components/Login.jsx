@@ -1,5 +1,5 @@
 import React, {useState}   from "react";
-import { Button, Form, Card,Row } from 'react-bootstrap'; 
+import { Button, Form, Card,Row, Alert } from 'react-bootstrap'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Login = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
 
     const history = useNavigate();
@@ -23,9 +24,13 @@ const Login = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password},headersData);
-        if(a.data.status === 'success'){
-            history('/');
+        try {
+            const a = await axios.post(`${import.meta.env.VITE_APP_URI}/login`, {"email":email,"password":password},headersData);
+            if(a.data.status === 'success'){
+                history('/');
+        }} catch (error) {
+            setError(error.response.data);
+            
         }
     }
 
@@ -61,8 +66,11 @@ const Login = () => {
                     <Form.Label className='reglabel'>¿Olvidaste tu contraseña? <Link to="/recuperar-contrasena">recupérala aquí</Link></Form.Label> 
                 </Form.Group>
                 <div className="text-center">
-                <Button variant="primary"  type="submit">
-                Iniciar Sesión
+                    <Alert variant="danger" className="mt-3" show={error}>
+                        {error}
+                    </Alert>
+                    <Button variant="primary"  type="submit">
+                        Iniciar Sesión
                     </Button>
                 </div>
             </Form>

@@ -15,7 +15,11 @@ border-bottom: 1px solid #c4ccde;
     color: white!important;
     background-color: #FE2472!important;
     border-color: #FE2472!important;
-
+}
+.btn-primary:hover {
+    color: white!important;
+    background-color: #dd1f62!important;
+    border-color: #dd1f62!important;
 }
 .logregcard{
     border: none !important;
@@ -44,4 +48,11 @@ border-bottom: 1px solid #c4ccde;
 }
 .form-control{
     border: 1px solid #FE2472 !important;
+}
+.element_icon {
+    color: #FE2472;
+    
+}
+.element_icon:hover {
+    color: #dd1f62;
 }
