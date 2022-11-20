@@ -118,6 +118,12 @@ const Home = () => {
                         </div>
                     </div>
                 </Card.Body>
+                <ModalEliminar show={eliminar}
+                changeData={(deleted)=>{
+                    setData(data.filter((item)=>item.cedula !== deleted.cedula));
+                }} 
+                
+                setShow={()=>{setEliminar()}} />
                 <ModalP setOpen={setShow} nombre='paciente' open={show}><Editar
                 changeData={(edited,cedula)=>{
                     setData(data.map((item)=>{
