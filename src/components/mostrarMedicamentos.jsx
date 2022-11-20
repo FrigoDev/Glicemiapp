@@ -4,14 +4,22 @@ import * as FaIcons from 'react-icons/fa';
 import {Modal, Button} from 'react-bootstrap';
 import {headersData} from "./configs";
 import axios from 'axios';
+import moment from 'moment';
 
-const ModalEliminar = ({show,setShow}) => {
-    
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+const ModalEliminar = ({show: medicamento,setShow,eliminar}) => {
+    console.log(medicamento)
+    const handleClose = () => setShow();
+    const eliminarMedicamento=async()=>{
+        try {
+            const response = await axios.delete(`${import.meta.env.VITE_APP_URI}/medicamentos/${medicamento.id}`,headersData);
+            console.log(response);
+            eliminar(medicamento.id);
+            handleClose();
+        } catch (error) {
+            console.log(error);
+        }}
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={medicamento} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Eliminar medicamento</Modal.Title>
             </Modal.Header>
@@ -20,7 +28,7 @@ const ModalEliminar = ({show,setShow}) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={eliminarMedicamento}>
                     Eliminar medicamento
                 </Button>
             </Modal.Footer>
@@ -28,10 +36,10 @@ const ModalEliminar = ({show,setShow}) => {
     );
 }
 
- const verMedicamentos=()=>{
-    const [show, setShow] = useState(false);
+ const verMedicamentos=({setEditar,actualizacion})=>{
     const {cedula}=useParams();
     const [medicamentos,setMedicamentos]=useState([])
+    const [eliminar,setEliminar]=useState()
     const setUso=(id,hora,check)=>{
         axios.put(`${import.meta.env.VITE_APP_URI}/actualizarCheks`,{hora,id,check},headersData)
     }
@@ -42,6 +50,18 @@ const ModalEliminar = ({show,setShow}) => {
         obtener_medicamentos();
     },[])
 
+    useEffect(()=>{
+        setMedicamentos(medicamentos.map(medicamento=>{
+            if(medicamento.id===actualizacion.id){
+                medicamento=actualizacion;
+            }
+            return medicamento;
+        }))
+    },[actualizacion])
+
+    const elminarMedicamento=async(id)=>{
+        setMedicamentos(medicamentos.filter(medicamento=>medicamento.id!==id))
+    }
     if(medicamentos.length===0){
         return(
             <>
@@ -70,7 +90,7 @@ const ModalEliminar = ({show,setShow}) => {
                             <td className="text-center">{medicamento.horarios.map((horario,index)=>{
                             return(
                                 <div key={index}>
-                                   {horario.hora}
+                                   {moment(horario.hora , 'HH:mm').format('hh:mm A')}
                                 </div>
                             )
                             })}</td>
@@ -86,16 +106,17 @@ const ModalEliminar = ({show,setShow}) => {
                                 }
                             </td>
                             <td className="text-center align-middle">
-                                <Link to="#"><FaIcons.FaPen className="fa-2x element_icon my-2"/></Link>
-                                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
+                                <FaIcons.FaPen onClick={()=>{setEditar(medicamento)}} className="fa-2x text-black my-2"/>
+                                <div style={{cursor: "pointer"}} onClick={()=>setEliminar(medicamento)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
                             </td>
-                            <ModalEliminar show={show} setShow={setShow} />
+                            
                         </tr>
                     )
                 }
                 )}
                     </tbody>
                 </table>
+                <ModalEliminar eliminar={elminarMedicamento} show={eliminar} setShow={()=>{setEliminar()}} />
             </div>
         </>
     )

@@ -17,9 +17,10 @@ const PData = (props) => {
     );
 }
 
-const Seguiminto = () => {
+const Seguiminto = ({actualizar}) => {
     const [datos,setDatos]=useState([])
-    let {cedula}=useParams();
+
+    const {cedula}=useParams();
     const obtener_datos = async() => { 
         const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/GetDiario/${cedula}`,headersData);
         setDatos(datos.data)
@@ -27,8 +28,8 @@ const Seguiminto = () => {
     }
     useEffect(() => {
         obtener_datos();
-    }, []);
-
+    }, [actualizar]);
+    
     return(
         <div className="page-content">
                 <div className="table-responsive text-center">
@@ -64,7 +65,7 @@ const Diario = () => {
     const history = useNavigate();
     const [paciente, setPaciente] = useState({});
     const [datos,userdatos]=useState({})
-
+    const [actualizar,setActualizar]=useState({})
     let {cedula}=useParams();
     const obtener_paciente = async() => {
         const res = await axios.get(`${import.meta.env.VITE_APP_URI}/paciente/${cedula}`,headersData); 
@@ -91,8 +92,8 @@ const Diario = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-       const salida= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"cedula":cedula,datos:datos},headersData)  
-        window.location.reload();
+       const {data}= await axios.post(`${import.meta.env.VITE_APP_URI}/diario`, {"cedula":cedula,datos:datos},headersData)  
+         setActualizar(data)
     }
     
     return (
@@ -125,7 +126,7 @@ const Diario = () => {
                     </Form>
                 </Card.Body>
             </Card>
-            <Seguiminto />
+            <Seguiminto actualizar={actualizar} />
             
 
         </>

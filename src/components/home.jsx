@@ -8,7 +8,7 @@ import SetType from './set_tipo';
 import ModalP from './Modales'
 import Editar from './P_edit'
 //recibir props y retornar una vista
-const PData = ({paciente,moverse,editar}) => {
+const PData = ({paciente,moverse,editar,eliminar}) => {
     const [show, setShow] = useState(false);
     return (
         <tr class="unread">
@@ -18,29 +18,37 @@ const PData = ({paciente,moverse,editar}) => {
                 <p class="m-0">{`${paciente.cedula}`}</p>
             </td>
             <td className="text-center align-middle">
-                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x element_icon my-2"/></div>
-                <div style={{cursor: "pointer"}} onClick={()=>setShow(true)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x text-black my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>eliminar(paciente)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
             </td>
-            <ModalEliminar show={show} setShow={setShow} />
+          
         </tr>
     );
 }
 
-const ModalEliminar = ({show,setShow}) => {
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+const ModalEliminar = ({show,setShow,changeData}) => {
+    const eliminar = async () => {
+        try{
+            const {data} = await axios.delete(`${import.meta.env.VITE_APP_URI}/Pacientes/${show.cedula}`,headersData);
+            changeData(show);
+            setShow();
+        
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={setShow}>
             <Modal.Header closeButton>
                 <Modal.Title>Eliminar paciente</Modal.Title>
             </Modal.Header>
             <Modal.Body>¿Está seguro que desea eliminar este paciente?</Modal.Body>
             <Modal.Footer className="justify-content-between">
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={setShow}>
                     Cerrar
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={eliminar}>
                     Eliminar paciente
                 </Button>
             </Modal.Footer>
@@ -53,6 +61,7 @@ const Home = () => {
         const [tipo, setTipo] = useState(-1);
         const [show,setShow] = useState(false);
         const [editar,setEditar] = useState({});
+        const [eliminar,setEliminar] = useState();
         const history = useNavigate();
         const moverse = (paciente) => {
             history(`/paciente/${paciente}`);
@@ -99,7 +108,7 @@ const Home = () => {
                                 {
                                     data.map((item,i) => 
                                     {
-                                        return <PData key={i} editar={(data)=>{setEditar(data);setShow(true);}} paciente={item} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
+                                        return <PData eliminar={(data)=>{setEliminar(data)}} key={i} editar={(data)=>{setEditar(data);setShow(true);}} paciente={item} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
                                     })
                                 }
                             </tbody>
@@ -109,7 +118,7 @@ const Home = () => {
                         </div>
                     </div>
                 </Card.Body>
-                <ModalP setOpen={setShow} nombre='Editar paciente' open={show}><Editar
+                <ModalP setOpen={setShow} nombre='paciente' open={show}><Editar
                 changeData={(edited,cedula)=>{
                     setData(data.map((item)=>{
                         if(item.cedula === cedula){
@@ -119,6 +128,7 @@ const Home = () => {
                     }))
                     setShow(false);
                 }}
+                
                 userdata={editar}></Editar></ModalP>
             </Card>
         );
