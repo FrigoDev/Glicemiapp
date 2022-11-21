@@ -97,7 +97,7 @@ const ModalEliminar = ({show: medicamento,setShow,eliminar}) => {
                                         medicamento.horarios.map((horario,index)=>{
                                             return(
                                                 <div key={index}>
-                                                    <input className="form-check-input" checked="checked" type="checkbox" defaultChecked={horario.fecha} onChange={(e)=>{setUso(medicamento.id,horario.hora,e.target.checked)}}/>
+                                                    <input className="form-check-input" type="checkbox" defaultChecked={horario.fecha} onChange={(e)=>{setUso(medicamento.id,horario.hora,e.target.checked)}}/>
                                                 </div>
                                             )
                                         })
