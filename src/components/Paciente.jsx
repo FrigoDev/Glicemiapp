@@ -43,7 +43,7 @@ const Paciente = () => {
 
     return(
         <div className="fluid-container">
-            <Card className="mx-auto" style={{ width: '23rem' }}>
+            <Card className="mx-auto" style={{ maxWidth: '23rem' }}>
                 <Card.Header>
                     <Row>
                             <Col className="text-center">

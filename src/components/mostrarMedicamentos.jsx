@@ -73,49 +73,51 @@ const ModalEliminar = ({show: medicamento,setShow,eliminar}) => {
     return(
         <>
             <div>
-                <table class="table table-hover">
-                    <tbody className="text-center align-items-center">
-                        <tr>
-                            <th className="text-center">Medicamento</th>
-                            <th className="text-center">Dosis</th>
-                            <th className="text-center">Horario</th>
-                            <th className="text-center">Check</th>
-                            <th></th>
-                        </tr>
-                {medicamentos.map((medicamento,index)=>{
-                    return(
-                        <tr key={index}>
-                            <td className="text-center">{medicamento.nombre}</td>
-                            <td className="text-center">{medicamento.dosis}</td>
-                            <td className="text-center">{medicamento.horarios.map((horario,index)=>{
-                            return(
-                                <div key={index}>
-                                   {moment(horario.hora , 'HH:mm').format('hh:mm A')}
-                                </div>
-                            )
-                            })}</td>
-                            <td className="text-center">
-                                {
-                                    medicamento.horarios.map((horario,index)=>{
-                                        return(
-                                            <div key={index}>
-                                                <input type="checkbox" defaultChecked={horario.fecha} onChange={(e)=>{setUso(medicamento.id,horario.hora,e.target.checked)}}/>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </td>
-                            <td className="text-center align-middle">
-                                <FaIcons.FaPen onClick={()=>{setEditar(medicamento)}} className="fa-2x text-black my-2"/>
-                                <div style={{cursor: "pointer"}} onClick={()=>setEliminar(medicamento)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
-                            </td>
-                            
-                        </tr>
-                    )
-                }
-                )}
-                    </tbody>
-                </table>
+                <div className="table-responsive  text-center">
+                    <table className="table table-hover">
+                        <tbody className="text-center align-items-center">
+                            <tr>
+                                <th className="text-center align-middle">Medicamento</th>
+                                <th className="text-center align-middle">Dosis</th>
+                                <th className="text-center align-middle">Horario</th>
+                                <th className="text-center align-middle">Check</th>
+                                <th></th>
+                            </tr>
+                    {medicamentos.map((medicamento,index)=>{
+                        return(
+                            <tr key={index}>
+                                <td className="text-center align-middle">{medicamento.nombre}</td>
+                                <td className="text-center align-middle">{medicamento.dosis}</td>
+                                <td className="text-center align-middle">{medicamento.horarios.map((horario,index)=>{
+                                return(
+                                    <div key={index}>
+                                    {moment(horario.hora , 'HH:mm').format('hh:mm A')}
+                                    </div>
+                                )
+                                })}</td>
+                                <td className="text-center align-middle">
+                                    {
+                                        medicamento.horarios.map((horario,index)=>{
+                                            return(
+                                                <div key={index}>
+                                                    <input className="form-check-input" checked="checked" type="checkbox" defaultChecked={horario.fecha} onChange={(e)=>{setUso(medicamento.id,horario.hora,e.target.checked)}}/>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </td>
+                                <td className="text-center align-middle">
+                                    <FaIcons.FaPen onClick={()=>{setEditar(medicamento)}} style={{cursor: "pointer"}} className="fa-2x element_icon my-2"/>
+                                    <div style={{cursor: "pointer"}} onClick={()=>setEliminar(medicamento)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
+                                </td>
+                                
+                            </tr>
+                        )
+                    }
+                    )}
+                        </tbody>
+                    </table>
+                </div>
                 <ModalEliminar eliminar={elminarMedicamento} show={eliminar} setShow={()=>{setEliminar()}} />
             </div>
         </>

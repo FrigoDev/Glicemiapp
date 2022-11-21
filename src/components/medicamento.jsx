@@ -225,7 +225,7 @@ const MostrarModal=()=>{
     const handleShow = () => setShow(true);
     return(
         <>
-            <Card className="mx-auto" style={{ width: '28rem' }}>
+            <Card className="mx-auto" style={{maxWidth : '28rem'}}>
                 <Card.Body>
                     <Card.Title className="text-center">Medicamentos</Card.Title>
                     <VerMedicamento actualizacion={actualizacion} setEditar={(data)=>{setEditar(data),setShowEdit(true)}}/>

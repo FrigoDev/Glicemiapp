@@ -49,6 +49,11 @@ border-bottom: 1px solid #c4ccde;
 .form-control{
     border: 1px solid #FE2472 !important;
 }
+//Hacer el check rosa
+.form-check-input:checked{
+    background-color:#FE2472!important;
+    border-color:#FE2472!important;
+}
 .element_icon {
     color: #FE2472;
     

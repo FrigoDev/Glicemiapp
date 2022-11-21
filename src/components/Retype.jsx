@@ -1,6 +1,6 @@
 import React,{useState,useEffect}from 'react';
 import UploadImage from "./UploadImage";
-import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
+import { Row, Col, Image as Imagen, Button, Form, Card } from 'react-bootstrap';
 import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {headersData} from "./configs"
@@ -50,7 +50,7 @@ const P_reg = () => {
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col className="text-center">
-                            <Basura className="my-1 tamañoImg" src={image? image:'userIcon.png'}  roundedCircle/>
+                            <Imagen className="my-1 tamañoImg" src={image? image:'userIcon.png'}  roundedCircle/>
                             <UploadImage image={setImage}/>
                         </Col>
                     </Row>

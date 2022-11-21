@@ -20,7 +20,6 @@ const Reg = () => {
     const handleChange = (e) => {
     const { name, value } = e.target;
             setUser({ ...user, [name]: value });
-    //Here is the problem, I don't know how to set the values of the inputs
         };
         const  handleSubmit = async (e) => { 
             const emailregex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

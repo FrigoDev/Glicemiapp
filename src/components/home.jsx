@@ -18,8 +18,8 @@ const PData = ({paciente,moverse,editar,eliminar}) => {
                 <p class="m-0">{`${paciente.cedula}`}</p>
             </td>
             <td className="text-center align-middle">
-                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x text-black my-2"/></div>
-                <div style={{cursor: "pointer"}} onClick={()=>eliminar(paciente)}><FaIcons.FaTrash className="fa-2x text-black my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>editar(paciente)}><FaIcons.FaPen className="fa-2x element_icon my-2"/></div>
+                <div style={{cursor: "pointer"}} onClick={()=>eliminar(paciente)}><FaIcons.FaTrash className="fa-2x element_icon my-2"/></div>
             </td>
           
         </tr>
@@ -96,25 +96,26 @@ const Home = () => {
         
 
         return (
-            <Card className="mx-auto" style={{ width: '24rem' }}>
+            <Card className="mx-auto" style={{ maxWidth: '24rem' }}>
                 <Card.Header>
                     <h2 className="fw-bold text-center">Pacientes</h2>
                 </Card.Header>
                 <Card.Body>
                     <div class="card-block px-0">
-
-                        <table class="table table-hover">
-                            <tbody>
-                                {
-                                    data.map((item,i) => 
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
                                     {
-                                        return <PData eliminar={(data)=>{setEliminar(data)}} key={i} editar={(data)=>{setEditar(data);setShow(true);}} paciente={item} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
-                                    })
-                                }
-                            </tbody>
-                        </table>
-                        <div className="text-center">
-                            <Link to="/p_reg" ><Button >Registrar paciente</Button></Link>
+                                        data.map((item,i) => 
+                                        {
+                                            return <PData eliminar={(data)=>{setEliminar(data)}} key={i} editar={(data)=>{setEditar(data);setShow(true);}} paciente={item} imagen={item.foto} name={item.nombre} moverse={moverse} cedula={item.cedula}  description={`${item.cedula}`}/>
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                            <div className="text-center">
+                                <Link to="/p_reg" ><Button >Registrar paciente</Button></Link>
+                            </div>
                         </div>
                     </div>
                 </Card.Body>
@@ -124,7 +125,7 @@ const Home = () => {
                 }} 
                 
                 setShow={()=>{setEliminar()}} />
-                <ModalP setOpen={setShow} nombre='paciente' open={show}><Editar
+                <ModalP setOpen={setShow} nombre='Editar paciente' open={show}><Editar
                 changeData={(edited,cedula)=>{
                     setData(data.map((item)=>{
                         if(item.cedula === cedula){

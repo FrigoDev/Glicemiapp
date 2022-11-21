@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import UploadImage from "./UploadImage";
 import { useNavigate } from 'react-router-dom';
-import { Row, Col, Image as Basura, Button, Form, Card } from 'react-bootstrap';
+import { Row, Col, Image as Imagen, Button, Form, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import {headersData} from './configs';
 //cambiar las dimensiones de la imagen en base64 a 100x100 y regresarla como base 64
@@ -9,7 +9,8 @@ import {headersData} from './configs';
 const P_reg = () => {
     const history = useNavigate();
     const [image, setImage] = useState('');
-    const [datos, setDatos] = useState({}); 
+    const [datos, setDatos] = useState({});
+    const [error, setError] = useState(false);
     const handleChange = (e) => {
         setDatos({
             ...datos,
@@ -18,8 +19,40 @@ const P_reg = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"imagen":image,"datosP":datos}, headersData);
-        history('/');
+        const { nombre, apellidos, telefono, cédula, edad, eps} = datos;
+            if(!eps || !nombre || !apellidos || !telefono || !cédula || !edad){
+                setError("Todos los campos son obligatorios");
+                return;
+            }
+            if(!RegExp(/^[0-9]{10}$/).test(telefono)){
+                setError("El teléfono no es válido");
+                return;
+            }
+            if(!RegExp(/^[a-zA-Z ]+$/).test(nombre)){
+                setError("El nombre no es válido");
+                return;
+            }
+            if(!RegExp(/^[a-zA-Z ]+$/).test(apellidos)){
+                setError("Los apellidos no son válidos");
+                return;
+            }
+            if(!RegExp(/^[0-9]{10}$/).test(cédula)){
+                setError("La cedula no es válida");
+                return;
+            }
+            if(!RegExp(/^[0-9]{1,3}$/).test(edad)){
+                setError("La edad no es válida");
+                return;
+            }
+            try {
+                    console.log(datos);
+                    await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"imagen":image,"datosP":datos}, headersData);
+                    history('/');
+                }
+            catch (error) {
+                setError(error.response.data);
+            }
+        
     }
     return(
         <Card className="mx-auto" style={{ width: '20rem'  }}>
@@ -30,7 +63,7 @@ const P_reg = () => {
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col className="text-center">
-                            <Basura className="my-1 tamañoImg" src={image? image:'userIcon.png'}  roundedCircle/>
+                            <Imagen className="my-1 tamañoImg" src={image? image:'userIcon.png'}  roundedCircle/>
                             <UploadImage image={setImage}/>
                             
                         </Col>
@@ -60,6 +93,9 @@ const P_reg = () => {
                         <Form.Control type="text" placeholder="EPS" name="eps" onChange={handleChange}/>
                     </Form.Group>
                     <div className="text-center">
+                    <Alert variant="danger" className="mt-3" show={error}>
+                        {error}
+                    </Alert>
                     <Button variant="primary" type="submit">
                         Registrar
                     </Button>

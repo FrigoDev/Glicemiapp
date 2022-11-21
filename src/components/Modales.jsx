@@ -6,6 +6,8 @@ const handleClose= ()=> {
 }
 return (
     <Dialog
+      maxWidth="xs"
+      fullWidth={true}
       open={open}
       onClose={handleClose} 
     >
