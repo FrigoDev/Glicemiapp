@@ -1,9 +1,12 @@
 import React,{useState,useEffect} from "react";
 import { Row, Col, Image, Button, Card } from 'react-bootstrap';
+import * as FaIcons from 'react-icons/fa';
 import BarChart from "./graphics";
 import './paciente.css'
 import {useParams,useNavigate,Link} from 'react-router-dom';
 import axios from 'axios';
+import ModalP from './Modales'
+import Editar from './P_edit'
 import {headersData} from './configs'
 const Dosis = (props) => {    
       
@@ -25,6 +28,7 @@ const Dosis = (props) => {
 const Paciente = () => {
     const history = useNavigate();
     const [paciente, setPaciente] = useState({});
+    const [show, setShow] = useState(false);
     const {cedula}=useParams();
     const fecha = new Date();
     const dia = fecha.getDate();
@@ -42,12 +46,25 @@ const Paciente = () => {
 
     return(
         <div className="fluid-container">
-            <Card className="mx-auto" style={{ maxWidth: '23rem' }}>
+            <ModalP open={show} setOpen={setShow} nombre='Editar paciente'>
+                <Editar userdata={paciente} changeData={(data)=>
+                    {
+                        setPaciente(data);
+                        setShow(false);
+                    }}
+                />
+            </ModalP>
+                <Card className="mx-auto" style={{ maxWidth: '23rem' }}>
                 <Card.Header>
                     <Row>
                             <Col className="text-center">
                                 <Image className="my-1" src={paciente.foto===""?"userIcon.png":import.meta.env.VITE_APP_URI+"/public/"+paciente.foto} roundedCircle/>
-                                <h2>{paciente.nombre}</h2>
+                                <div className="d-block text-center">
+                                    <div>
+                                        <h2 className="d-inline">{paciente.nombre}</h2>
+                                        <div className="d-inline text-center" style={{cursor: "pointer"}} onClick={()=>{setShow(true)}}><FaIcons.FaPen style={{height : '2em'}} className="element_icon_2 pb-2"/></div>
+                                    </div>
+                                </div>
                                 <h4>Edad: {paciente.edad}</h4>
                             </Col>
                     </Row>

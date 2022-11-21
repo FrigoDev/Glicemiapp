@@ -14,8 +14,8 @@ const Set_tipo = () => {
     return (
         <>
         <h1 className="text-center mb-md-4 mb-3">Tipos de cuenta</h1>
-        <div className="row">
-            <Card className="col-md-6 mx-auto text-center p-0 mb-3" style={{ width: '28rem' }}>
+        <div className="row justify-content-between mx-3 mx-md-5">
+            <Card className="col-md-6 text-center p-0 mb-3" style={{ maxWidth: '28rem' }}>
                 <Card.Header>
                     <h3>Cuenta de usuario unico</h3>
                 </Card.Header>
@@ -36,7 +36,7 @@ const Set_tipo = () => {
                     <Button onClick={()=>{history("/Retype")}} >Seleccionar</Button>
                 </Card.Body>
             </Card>
-            <Card className="col-md-6 mx-auto text-center p-0 mb-3" style={{ width: '28rem' }}>
+            <Card className="col-md-6 text-center p-0 mb-3" style={{ maxWidth: '28rem' }}>
                 <Card.Header>
                     <h3>Cuenta multipacientes</h3>
                 </Card.Header>

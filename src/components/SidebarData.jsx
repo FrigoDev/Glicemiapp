@@ -34,7 +34,7 @@ const iftipo = () => {
   }];
   const tipo1=[{
     title: 'Paciente',
-    path: '/paciente/:cedula',
+    path: '/',
     icon: <FaIcons.FaUserCircle className=' fa-6x' />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
