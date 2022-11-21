@@ -7,7 +7,6 @@ import {headersData} from './configs'
 const Set_tipo = () => {
     const history = useNavigate();
     const cambiar_tipo = async(tipo) => {
-        console.log(tipo);
         await axios.put(`${import.meta.env.VITE_APP_URI}/userType`, {tipo} ,headersData)
         localStorage.setItem('tipo', tipo);
         window.location.reload();  

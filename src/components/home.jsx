@@ -35,7 +35,6 @@ const ModalEliminar = ({show,setShow,changeData}) => {
         
         }
         catch(error){
-            console.log(error);
         }
     }
     return (
@@ -88,7 +87,6 @@ const Home = () => {
             }
             else if(tipo ===1){
                 if(data.length !== 0){
-                    console.log(data[0]);
                     moverse(data[0].cedula);
                 }
             }

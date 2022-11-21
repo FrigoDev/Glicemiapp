@@ -7,16 +7,13 @@ import axios from 'axios';
 import moment from 'moment';
 
 const ModalEliminar = ({show: medicamento,setShow,eliminar}) => {
-    console.log(medicamento)
     const handleClose = () => setShow();
     const eliminarMedicamento=async()=>{
         try {
             const response = await axios.delete(`${import.meta.env.VITE_APP_URI}/medicamentos/${medicamento.id}`,headersData);
-            console.log(response);
             eliminar(medicamento.id);
             handleClose();
         } catch (error) {
-            console.log(error);
         }}
     return (
         <Modal show={medicamento} onHide={handleClose}>

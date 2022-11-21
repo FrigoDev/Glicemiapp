@@ -47,7 +47,6 @@ const Medicamento = () => {
                         <Col md={3} className="d-flex align-items-end">
                             <Button variant="primary"  onClick={()=>{
                                 setHorarios([...horarios,datos.hora])
-                                console.log(horarios);
                             }}>
                                 <AddIcon/>
                             </Button>
@@ -157,7 +156,6 @@ const CambiarMedicamento = ({medicamento,actualizar}) => {
                         <Col md={3} className="d-flex align-items-end">
                             <Button variant="primary"  onClick={()=>{
                                 setHorarios([...horarios,datos.hora])
-                                console.log(horarios);
                             }}>
                                 <AddIcon/>
                             </Button>
@@ -220,8 +218,7 @@ const MostrarModal=()=>{
     const [show, setShow] = useState(false);
     const [showEdit,setShowEdit]=useState(false)
     const [editar, setEditar] = useState();
-    const [actualizacion,setActualizacion]=useState({id:-1}) 
-    console.log(editar);
+    const [actualizacion,setActualizacion]=useState({id:-1})
     const handleShow = () => setShow(true);
     return(
         <>

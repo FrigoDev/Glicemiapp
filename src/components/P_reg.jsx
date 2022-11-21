@@ -45,7 +45,6 @@ const P_reg = () => {
                 return;
             }
             try {
-                    console.log(datos);
                     await axios.post(`${import.meta.env.VITE_APP_URI}/registerPacientes`, {"imagen":image,"datosP":datos}, headersData);
                     history('/');
                 }

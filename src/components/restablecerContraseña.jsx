@@ -11,7 +11,6 @@ const RestablecerContraseña = () => {
     const confirmarToken= async()=>{
        try{
         const res=await axios.get(`${import.meta.env.VITE_APP_URI}/confrest/${token}`,headersData)
-        console.log(res.data)
        }
        catch(err){
                setError("El token no es valido")
@@ -21,7 +20,6 @@ const RestablecerContraseña = () => {
         confirmarToken();
     },[])
     const onchange = (e) => {
-        console.log({name:e.target.name,value:e.target.value})
         setForm({
             ...form,
             [e.target.name]: e.target.value

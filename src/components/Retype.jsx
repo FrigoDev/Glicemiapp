@@ -15,7 +15,6 @@ const P_reg = () => {
     const getdata = async () => {
         const response = await axios.post(`${import.meta.env.VITE_APP_URI}`,{email:localStorage.getItem('correo')});
         setUser(response.data);
-        console.log(response.data);
     }
 
     

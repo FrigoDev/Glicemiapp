@@ -29,7 +29,6 @@ const iftipo = () => {
     path: '/login',
     icon: <FaIcons.FaDoorClosed  className=' fa-6x ' />,
     foo: async()=>{
-      console.log("chale");
       await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
     }
   }];
@@ -46,7 +45,6 @@ const iftipo = () => {
     title: 'Cerrar sesion',
     path: '/login',
     foo: async()=>{
-      console.log("chale");
       await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
     },
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />
@@ -55,7 +53,6 @@ const iftipo = () => {
     title: 'Cerrar sesion',
     path: '/login',
     foo: async()=>{
-      console.log("chale");
       await axios.get(`${import.meta.env.VITE_APP_URI}/logout`,headersData);
     },
     icon: <FaIcons.FaDoorClosed className=' fa-6x ' />

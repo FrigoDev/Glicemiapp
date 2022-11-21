@@ -50,7 +50,6 @@ const P_edit = ({userdata,changeData}) => {
         Object.keys(datos).forEach((key) => (data[key] == null || data[key] == ''|| data[key] == userdata[key]) && delete data[key]);
         try {
         const {data:pacienteEdit }= await axios.put(`${import.meta.env.VITE_APP_URI}/Pacientes/${userdata.cedula}`,{...data}, headersData);
-        console.log(pacienteEdit);
         changeData(pacienteEdit.paciente,userdata.cedula);
         } catch (error) {
             setError(error.response.data.message);

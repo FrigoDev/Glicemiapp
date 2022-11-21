@@ -64,7 +64,6 @@ const Reg = () => {
     return(
         <Card className="mx-auto my-5 logregcard" style={{ width: '22rem' , marginTop: 'auto'}}>
             <Card.Header>{
-                console.log(import.meta.env.VITE_APP_URI)
                 }
             <h2 className="fw-bold text-center">Registro</h2>
             </Card.Header>

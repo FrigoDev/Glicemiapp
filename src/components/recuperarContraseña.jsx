@@ -10,7 +10,6 @@ const RecuperarContraseña = () => {
     const enviarCorreo = async (e) => {
         e.preventDefault();
         const res = await axios.post(`${import.meta.env.VITE_APP_URI}/forgotpass`, { email }, headersData);
-        console.log(res.data);
     }
     const onChangeEmail = (e) => {
         setEmail(e.target.value);
@@ -18,7 +17,6 @@ const RecuperarContraseña = () => {
     return (
         <Card className="mx-auto my-5 logregcard" style={{ width: '23rem' , marginTop: 'auto'}}>
             <Card.Header>{
-                console.log(import.meta.env.VITE_APP_URI)
                 }
             <h2 className="fw-bold text-center">Recuperar contraseña</h2>
             </Card.Header>

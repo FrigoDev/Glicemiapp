@@ -26,7 +26,6 @@ const Seguiminto = ({actualizar}) => {
     const obtener_datos = async() => { 
         const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/GetDiario/${cedula}`,headersData);
         setDatos(datos.data)
-        console.log(datos.data);
     }
     useEffect(() => {
         obtener_datos();

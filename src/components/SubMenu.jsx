@@ -42,7 +42,6 @@ const DropdownLink = styled(Link)`
 
 const SubMenu = ({ item }) => {
   const navigate = useNavigate();
-  console.log(item.title);
   const showSubnav = () => setSubnav(!subnav);
 
   return (

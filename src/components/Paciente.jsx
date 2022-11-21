@@ -8,7 +8,6 @@ import {headersData} from './configs'
 const Dosis = (props) => {    
       
     const handleClick = async(e) => {
-      console.log(e.target.checked);
     } 
 
    return(
