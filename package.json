@@ -16,8 +16,10 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "chart.js": "3.9.1",
+    "i": "^0.3.7",
     "mdb-react-ui-kit": "^4.2.0",
     "moment": "^2.29.4",
+    "npm": "^9.1.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-chartjs-2": "3.3.0",
@@ -27,7 +29,8 @@
     "react-is": "^18.2.0",
     "react-router-dom": "^6.4.0",
     "sass": "^1.54.9",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

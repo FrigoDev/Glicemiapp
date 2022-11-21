@@ -5,6 +5,8 @@ import './diario.css'
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { headersData } from './configs'
+import moment from "moment";
+import * as XLSX from 'xlsx/xlsx.mjs';
 const PData = (props) => {
     const  fecha = new Date(props.fecha);
     return (
@@ -19,7 +21,7 @@ const PData = (props) => {
 
 const Seguiminto = ({actualizar}) => {
     const [datos,setDatos]=useState([])
-
+    
     const {cedula}=useParams();
     const obtener_datos = async() => { 
         const datos = await axios.get(`${import.meta.env.VITE_APP_URI}/GetDiario/${cedula}`,headersData);
@@ -30,10 +32,16 @@ const Seguiminto = ({actualizar}) => {
         obtener_datos();
     }, [actualizar]);
     
+    const exportdata=()=>{
+        const sheet =XLSX.utils.json_to_sheet(datos.map((item)=>{return {fecha:moment(item.fecha).format("DD/MM/YYYY"),hora:moment(item.hora,"HH:mm:ss").format("HH:mm"),glucosa:item.glucosa,insulina:item.insulina}}))
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook,sheet,"datos")
+        XLSX.writeFile(workbook,"diario_datos.xlsx")
+    }
     return(
         <div className="page-content">
                 <div className="table-responsive text-center">
-                    <table className="table table-hover">
+                    <table className="table table-hover mb-0">
                         <thead className="Table-thead">
                             <tr>
                                 <th scope="col">Fecha</th>
@@ -53,8 +61,11 @@ const Seguiminto = ({actualizar}) => {
                         </tbody>
 
                     </table>
+                    <div className="text-center">
+                    <Button className="my-3" onClick={exportdata}>Exportar</Button>
                 </div>
-                <div className="page-content-1">
+                </div>
+                <div className="page-content-1">        
             <BarChart datos={datos} />
             </div>
             </div>
